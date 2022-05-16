@@ -5,10 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { PvnkAbilitiesComponent } from './pvnk-abilities/pvnk-abilities.component';
+import { PvnkIdentityComponent } from './pvnk-identity/pvnk-identity.component';
+import { SafeHtmlPipe } from './safepipe.module';
+import { PvnkDetailsComponent } from './pvnk-details/pvnk-details.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    SafeHtmlPipe,
+    AppComponent,
+    PvnkAbilitiesComponent,
+    PvnkIdentityComponent,
+    PvnkDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+.ability-names {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+        'name       score'
+        'descrip    score';
+    strong {
+        grid-area: name;
+    }
+    em {
+        grid-area: descrip;
+        font-size: 0.8em;
+    }
+    span.score {
+        grid-area: score;
+        font-size: 1.8em;
+    }
+}

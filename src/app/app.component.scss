@@ -1,0 +1,9 @@
+.pvnk-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 99vw;
+    font-size: 1em;
+    h1 {
+        place-self: center;
+    }
+}

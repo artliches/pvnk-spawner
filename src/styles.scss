@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+.card {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content auto;
+    grid-gap: 1rem;
+    border-bottom: 1px solid black;
+    padding: 1rem 0rem 1rem 0rem;
+    .card-title {
+        place-self: center;
+    }
+    .card-body {
+        padding: 0rem 1rem 0rem 1rem;
+        place-self: stretch;
+        display: grid;
+        grid-gap: 1rem;
+    }
+}

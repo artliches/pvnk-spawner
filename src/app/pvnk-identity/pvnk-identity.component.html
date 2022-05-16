@@ -1,0 +1,20 @@
+<span class="card">
+    <span class="card-title">
+        <strong>Class</strong>
+        {{pvnk.name | titlecase}}
+    </span>
+
+    <span class="card-body">
+        <span [innerHtml]="pvnk.flavor | safeHtml"></span>
+        <span class="hp-glitches">
+            <span>
+                <strong>HP </strong>
+                <span>{{hp}}</span>
+            </span>
+            <span>
+                <strong>GLITCHES</strong>
+                {{pvnk.abilityMods.gliches | uppercase}}
+            </span>
+        </span>
+    </span>
+</span>
