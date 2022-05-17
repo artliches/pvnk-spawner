@@ -10,6 +10,11 @@
 
 .card-body {
     .nano-display {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 0.5rem;
+    }
+    .nano-display>span {
         display: flex;
         flex-direction: column;
         strong {

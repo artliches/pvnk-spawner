@@ -1,0 +1,9 @@
+.card-title {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    em {
+        font-size: 0.8em;
+    }
+    place-items: center;
+}

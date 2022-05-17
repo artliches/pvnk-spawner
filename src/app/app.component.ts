@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
     {name: 'toughness', value: 0, descrip: 'Survive falling, poison, and elements'},
   ];
   chosenPvnk: any;
-  cyberTech = '';
   hp = 0;
   prevPvnk = -1;
   specialPvnks = [
@@ -27,6 +26,11 @@ export class AppComponent implements OnInit {
         gliches: 'd2',
         presence: +2,
         toughness: -2
+      },
+      equipMods: {
+        weapons: 6,
+        armor: 2,
+        nano: 1,
       }
     },
     {
@@ -38,6 +42,11 @@ export class AppComponent implements OnInit {
         knowledge: +2,
         toughness: -1,
         strength: -1
+      },
+      equipMods: {
+        weapons: 8,
+        armor: 2,
+        apps: 1,
       }
     },
     {
@@ -49,6 +58,9 @@ export class AppComponent implements OnInit {
         presence: -1,
         knowledge: -1,
         toughness: +2
+      },
+      equipMods: {
+        armor: 4
       }
     },
     {
@@ -59,6 +71,10 @@ export class AppComponent implements OnInit {
         gliches: 'd4',
         presence: -2,
         knowledge: +2
+      },
+      equipMods: {
+        weapons: 6,
+        armor: 2
       }
     },
     {
@@ -70,6 +86,9 @@ export class AppComponent implements OnInit {
         presence: +1,
         strength: +1,
         knowledge: -2
+      },
+      equipMods: {
+        cybertech: 12
       }
     },
     {
@@ -79,24 +98,44 @@ export class AppComponent implements OnInit {
         hp: 6,
         gliches: 'd3',
         strength: -2
+      },
+      equipMods: {
+        weapons: 6,
+        armor: 2
       }
     },
   ];
-  nano = {};
+  cyberTech: any[] = [];
+  nano: any[]  = [];
+  apps: any[]  = [];
+  equipMods = {};
+  reroll = false;
 
   constructor(
     private randomRoller: RandomNumberService
   ) {}
 
   ngOnInit(): void {
-      this.chosenPvnk = this.getAPvnk();
-      this.getAbilityMods();
+    this.assignPvnk();
+  }
+
+  assignPvnk(reroll?: boolean) {
+    this.chosenPvnk = this.getAPvnk();
+    this.getAbilityMods();
+    if (reroll) {
+      console.log(reroll);
+      this.nano = [];
+      this.apps = [];
+      this.cyberTech = [];
+      this.reroll = !this.reroll;
+    }
   }
 
   getAPvnk() {
-    const rolledNum = this.randomRoller.getRandomNumber(0, 5);
+    const rolledNum = this.randomRoller.getRandomNumber(0, this.specialPvnks.length - 1, this.prevPvnk);
     const newPvnk = this.specialPvnks[rolledNum];
-    this.prevPvnk  = rolledNum;
+    this.prevPvnk = rolledNum;
+    this.equipMods = newPvnk.equipMods;
 
     return newPvnk;
   }
@@ -147,8 +186,17 @@ export class AppComponent implements OnInit {
   }
 
   getCyberNanoApp(event: any) {
-    console.log(event);
-    this.cyberTech = event.cyber ? event.cyber : '';
-    this.nano = event.nano ? event.nano : {};
+    if (event.nano.hasOwnProperty('power')) {
+      this.nano.push(event.nano);
+    }
+
+    if (event.apps.length) {
+      this.apps = event.apps;
+    }
+
+    if (event.cyber.length) {
+      this.cyberTech.push(event.cyber);
+      console.log(this.cyberTech);
+    }
   }
 }

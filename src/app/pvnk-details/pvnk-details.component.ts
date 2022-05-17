@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { RandomNumberService } from '../services/random-number.service';
 import { DEBT, FEATURE, OBSESSION, QUIRK, STYLE, WANTS } from '../services/random-tables.constant';
 
@@ -7,7 +7,8 @@ import { DEBT, FEATURE, OBSESSION, QUIRK, STYLE, WANTS } from '../services/rando
   templateUrl: './pvnk-details.component.html',
   styleUrls: ['./pvnk-details.component.scss']
 })
-export class PvnkDetailsComponent implements OnInit {
+export class PvnkDetailsComponent implements OnInit, OnChanges {
+    @Input() reroll = false;
     debtAmount = 0;
     pvnkDetails: {[key: string]: string} = {
         style : '',
@@ -33,8 +34,12 @@ export class PvnkDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-      this.getPvnkDetails();
-      this.debtAmount = this.randomNumber.rollMultipleDice(3, 6) * 1000;
+
+  }
+
+  ngOnChanges(): void {
+    this.getPvnkDetails();
+    this.debtAmount = this.randomNumber.rollMultipleDice(3, 6) * 1000;
   }
 
 
