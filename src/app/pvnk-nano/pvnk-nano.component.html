@@ -1,0 +1,17 @@
+<span class="card">
+    <span class="card-title">
+        <strong>NANO</strong>
+        <em>Test DR12 Presence to use Nano. Failure→take d2 dmg.+Fumble triggers Infection linked to that power. Each Nano use adds +1 to Fumble when using Nano until the next day.</em>
+    </span>
+    <span class="card-body">
+        <span class="nano-display">
+            <strong>POWER</strong>
+            <span [innerHtml]="nano.power | safeHtml"></span>
+        </span>
+
+        <span class="nano-display">
+            <strong>INFESTATION</strong>
+            <span [innerHtml]="nano.infestation | safeHtml"></span>
+        </span>
+    </span>
+</span>

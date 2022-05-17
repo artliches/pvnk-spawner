@@ -9,6 +9,9 @@ import { PvnkAbilitiesComponent } from './pvnk-abilities/pvnk-abilities.componen
 import { PvnkIdentityComponent } from './pvnk-identity/pvnk-identity.component';
 import { SafeHtmlPipe } from './safepipe.module';
 import { PvnkDetailsComponent } from './pvnk-details/pvnk-details.component';
+import { PvnkEquipmentComponent } from './pvnk-equipment/pvnk-equipment.component';
+import { PvnkCybertechComponent } from './pvnk-cybertech/pvnk-cybertech.component';
+import { PvnkNanoComponent } from './pvnk-nano/pvnk-nano.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { PvnkDetailsComponent } from './pvnk-details/pvnk-details.component';
     PvnkAbilitiesComponent,
     PvnkIdentityComponent,
     PvnkDetailsComponent,
+    PvnkEquipmentComponent,
+    PvnkCybertechComponent,
+    PvnkNanoComponent,
   ],
   imports: [
     BrowserModule,

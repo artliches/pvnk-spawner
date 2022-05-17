@@ -1,10 +1,12 @@
 <span class="card">
     <span class="card-title">
-        ABILITIES
+        <span class="clickable">ABILITIES</span>
     </span>
     <div class="card-body" *ngFor="let ability of abilities">
         <span class="ability-names">
-            <strong>{{ability.name | titlecase}}</strong>
+            <strong>
+                <span class="clickable">{{ability.name | titlecase}}</span>
+            </strong>
             <em>
                 {{ability.descrip}}
             </em>

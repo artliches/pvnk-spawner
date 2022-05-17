@@ -1,0 +1,19 @@
+.card-title {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    em {
+        font-size: 0.8em;
+    }
+    place-items: center;
+}
+
+.card-body {
+    .nano-display {
+        display: flex;
+        flex-direction: column;
+        strong {
+            border-bottom: 1px solid black;
+        }
+    }
+}

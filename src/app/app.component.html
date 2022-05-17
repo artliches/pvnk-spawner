@@ -3,4 +3,7 @@
   <app-pvnk-identity [pvnk]="chosenPvnk" [hp]="hp"></app-pvnk-identity>
   <app-pvnk-abilities [abilities]="abilities"></app-pvnk-abilities>
   <app-pvnk-details></app-pvnk-details>
+  <app-pvnk-equipment (onCyberNanoApp)="getCyberNanoApp($event)"></app-pvnk-equipment>
+  <app-pvnk-cybertech *ngIf="cyberTech" [cyberTech]="cyberTech"></app-pvnk-cybertech>
+  <app-pvnk-nano *ngIf="(nano | keyvalue)?.length" [nano]="nano"></app-pvnk-nano>
 </span>

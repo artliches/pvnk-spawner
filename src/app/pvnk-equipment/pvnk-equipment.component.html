@@ -1,0 +1,17 @@
+<span class="card">
+    <span class="card-title">
+        <strong>
+            <span class="clickable">
+                EQUIPMENT
+            </span>
+        </strong>
+    </span>
+
+    <span class="card-body">
+        <ul>
+            <li *ngFor="let equip of equipment">
+                <span [innerHtml]="equip | safeHtml"></span>
+            </li>
+        </ul>
+    </span>
+</span>

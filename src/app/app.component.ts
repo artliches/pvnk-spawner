@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
     {name: 'toughness', value: 0, descrip: 'Survive falling, poison, and elements'},
   ];
   chosenPvnk: any;
+  cyberTech = '';
   hp = 0;
   prevPvnk = -1;
   specialPvnks = [
@@ -81,6 +82,7 @@ export class AppComponent implements OnInit {
       }
     },
   ];
+  nano = {};
 
   constructor(
     private randomRoller: RandomNumberService
@@ -142,5 +144,11 @@ export class AppComponent implements OnInit {
         this.hp = this.hp < 0 ? 0 : this.hp;
       }
     }
+  }
+
+  getCyberNanoApp(event: any) {
+    console.log(event);
+    this.cyberTech = event.cyber ? event.cyber : '';
+    this.nano = event.nano ? event.nano : {};
   }
 }
