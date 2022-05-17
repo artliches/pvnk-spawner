@@ -1,0 +1,1 @@
+.card{display:grid;grid-template-columns:1fr;grid-template-rows:min-content auto;grid-gap:1rem;border-bottom:1px solid black;padding:1rem 0rem}.card .card-title{place-self:center}.card .card-body{padding:0rem 1rem;place-self:stretch;display:grid;grid-gap:1rem}.clickable{background-color:#000;color:#fff;cursor:pointer}ul{padding:0rem;margin:0rem}
