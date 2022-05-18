@@ -20,6 +20,22 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
         weapons: WEAPONS,
         armor: ARMOR,
     };
+    classSpecificEquipObj = {
+        killer_extra: KILLER_EXTRA,
+        cyberslasher_extra: CYBERSLASHER_EXTRA,
+        nanomancer_extra: NANOMANCER_EXTRA,
+        gearhead_extra: GEARHEAD_EXTRA,
+    };
+    prevRollObj: {[key: string]: number}  = {
+        start1:  -1,
+        start2:  -1,
+        start3:  -1,
+        weapons: -1,
+        armor:   -1,
+        killer_extra: -1,
+        cyberslasher_extra: -1,
+        nanomancer_extra: -1
+    };
     cyberTech = '';
     nano = {};
     app: any[] = [];
@@ -37,19 +53,51 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      const creds = this.randomNumber.rollMultipleDice(2, 6) * 10;
-    this.equipment = [
-        `${creds}¤ on an <strong>anonymous credstick</strong>`,
-        `some <strong>cheap clothes</strong>`,
-        `a <strong>Retinal Com Device ( R C D )</strong>`
-    ];
-    this.nano = {};
-    this.app = [];
-    this.cyberTech = '';
-      
-    this.getEquipment();
-    this.getClassSpecificEquipment();
+    this.rollEquipment();
   }
+
+  reRollEquip(equip: any) {
+      const standardEquipKeys = Object.keys(this.equipArray).includes(equip);
+      const equipObj = standardEquipKeys ? this.equipArray : this.classSpecificEquipObj;
+
+      for (const [key, value] of Object.entries(equipObj)) {
+        if (equip === key) {
+          let armorMod = 0;
+
+          let upperNum = this.equipMods[key] ? this.equipMods[key] : value.length;
+          if (key === 'armor' && !this.equipMods[key]) {
+              upperNum = 3;
+          } else if (key === 'armor' && this.equipMods[key] === 4) {
+              armorMod += 1;
+          }
+          
+          this.equipment.map(result => {
+              if (result.key === equip) {
+                  const index = this.randomNumber.getRandomNumber(0, upperNum - 1, this.prevRollObj[key]);
+                  this.prevRollObj[key] = index;
+                  result.value = value[index  + armorMod];
+              }
+          });
+        }
+    }
+
+  }
+
+    public rollEquipment() {
+        const creds = this.randomNumber.rollMultipleDice(2, 6) * 10;
+        this.equipment = [
+            {key: 'default', value: `<strong class="clickable">${creds}¤</strong> on an <strong>anonymous credstick</strong>`},
+            {key: 'default', value: `some <strong>cheap clothes</strong>`},
+            {key: 'default', value: `a <strong>Retinal Com Device ( R C D )</strong>`}
+        ];
+        this.nano = {};
+        this.app = [];
+        this.cyberTech = '';
+        this.emitData();
+
+        this.getEquipment();
+        this.getClassSpecificEquipment();
+    }
 
     private getEquipment() {
         for (const [key, value] of Object.entries(this.equipArray)) {
@@ -61,7 +109,8 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
             } else if (key === 'armor' && this.equipMods[key] === 4) {
                 armorMod += 1;
             }
-            const numToRoll = this.randomNumber.getRandomNumber(0,upperNum - 1) + armorMod;
+            const numToRoll = this.randomNumber.getRandomNumber(0, upperNum - 1, this.prevRollObj[key]);
+            this.prevRollObj[key] = numToRoll;
 
             if (value[numToRoll].includes('cybertech')) {
                 if (!this.equipMods.hasOwnProperty('nano') && !this.equipMods.hasOwnProperty('apps')) {
@@ -70,9 +119,7 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
                     this.getApp();
                 } else if (this.equipMods.hasOwnProperty('nano')) {
                     this.rollNano();
-                }
-
-                this.emitData();
+                }                
             } else if (value[numToRoll].includes('nano')) {
                 if (!this.equipMods.hasOwnProperty('apps') && !this.equipMods.hasOwnProperty('cybertech')) {
                     this.rollNano();
@@ -81,8 +128,6 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
                 } else if (this.equipMods.hasOwnProperty('cybertech')) {
                     this.getCybertech();
                 }
-
-                this.emitData();
             } else if (value[numToRoll].includes('Cyberdeck')) {
                 if (!this.equipMods.hasOwnProperty('nano') && !this.equipMods.hasOwnProperty('cybertech')) {
                     for (let i = 0; i < 2; i++) {
@@ -90,36 +135,33 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
                     }
 
                     if (!this.equipMods.hasOwnProperty('apps')) {
-                        this.equipment.push(value[numToRoll]);
+                        this.equipment.push({key: key, value: value[numToRoll]});
                     }
                 } else if (this.equipMods.hasOwnProperty('cybertech')) {
                     this.getCybertech();
                 } else {
                     this.rollNano();
                 }
-
-                this.emitData();
             } else {
-                this.equipment.push(value[numToRoll]);
+                this.equipment.push({key: key, value: value[numToRoll + armorMod]});
             }
         }
 
         if (this.equipMods.hasOwnProperty('nano')) {
             this.rollNano();
-            this.emitData();
         }
 
         if (this.equipMods.hasOwnProperty('apps')) {
             this.getApp();
             this.getApp(true);
-            this.emitData();
-            this.equipment.push('<strong>Cyberdeck</strong> with knowledge+4 slots');
+            
+            this.equipment.push({key: '', value: '<strong>Cyberdeck</strong> with knowledge+4 slots'});
         }
 
         if (this.equipMods.hasOwnProperty('cybertech')) {
             this.getCybertech();
-            this.emitData();
         }
+        this.emitData();
     }
 
     private getApp(burned?: boolean) {
@@ -156,19 +198,27 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
     getClassSpecificEquipment() {
         switch(true) {
             case this.pvnkClass.includes('nanomancer') : {
-                this.equipment.push(NANOMANCER_EXTRA[this.randomNumber.getRandomNumber(0, NANOMANCER_EXTRA.length - 1)]);
+                const index = this.randomNumber.getRandomNumber(0, NANOMANCER_EXTRA.length - 1, this.prevRollObj['nanomancer_extra']);
+                this.prevRollObj['nanomancer_extra'] = index;
+                this.equipment.push({key: 'nanomancer_extra', value: NANOMANCER_EXTRA[index]});
               break;
             }
             case this.pvnkClass.includes('killer') : {
-                this.equipment.push(KILLER_EXTRA[this.randomNumber.getRandomNumber(0, KILLER_EXTRA.length - 1)]);
+                const index = this.randomNumber.getRandomNumber(0, NANOMANCER_EXTRA.length - 1, this.prevRollObj['killer_extra']);
+                this.prevRollObj['killer_extra'] = index;
+                this.equipment.push({key: 'killer_extra', value: KILLER_EXTRA[index]});
               break;
             }
             case this.pvnkClass.includes('gearhead') : {
-                this.equipment.push(GEARHEAD_EXTRA[this.randomNumber.getRandomNumber(0, GEARHEAD_EXTRA.length - 1)]);
+                const index = this.randomNumber.getRandomNumber(0, NANOMANCER_EXTRA.length - 1, this.prevRollObj['gearhead_extra']);
+                this.prevRollObj['gearhead_extra'] = index;
+                this.equipment.push({key: 'gearhead_extra', value: GEARHEAD_EXTRA[index]});
               break;
             }
             case this.pvnkClass.includes('cyberslasher') : {
-                this.equipment.push(CYBERSLASHER_EXTRA[this.randomNumber.getRandomNumber(0, CYBERSLASHER_EXTRA.length - 1)]);
+                const index = this.randomNumber.getRandomNumber(0, NANOMANCER_EXTRA.length - 1, this.prevRollObj['cyberslasher_extra']);
+                this.prevRollObj['cyberslasher_extra'] = index;
+                this.equipment.push({key: 'cyberslasher_extra', value: CYBERSLASHER_EXTRA[index]});
               break;
             }
             default: {

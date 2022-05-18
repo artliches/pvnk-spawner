@@ -1,3 +1,7 @@
+body {
+    font-family: calling-code, sans-serif;
+}
+
 .card {
     display: grid;
     grid-template-columns: 1fr;
@@ -18,6 +22,7 @@
 
 .clickable {
     background-color: black;
+    padding: 0rem 0.3rem 0rem 0.3rem;
     color: white;
     cursor: pointer;
     transition: all .2s ease-in-out; 

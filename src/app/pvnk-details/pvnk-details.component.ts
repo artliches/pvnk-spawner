@@ -11,6 +11,7 @@ export class PvnkDetailsComponent implements OnInit, OnChanges {
     @Input() reroll = false;
     @Input() pvnkClass: string = '';
 
+    prevOrigin = -1;
     originIntro = '';
     originResult = '';
     originExtra = '';
@@ -44,58 +45,94 @@ export class PvnkDetailsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
+    this.prevOrigin = -1;
     this.getPvnkDetails();
     this.getPvnkOrigin();
     this.getName();
+    this.getDebt();
+  }
+
+  public getDebt() {
     this.debtAmount = this.pvnkClass.includes('hacker') ? this.randomNumber.rollMultipleDice(6, 10) * 1000 : this.randomNumber.rollMultipleDice(3, 6) * 1000;
   }
 
-  private getPvnkDetails() {
-    for (const [key, value] of Object.entries(this.pvnkDetails)) {
+  public getPvnkDetails(rerollSection?: string) {
+    // NEED TO APPLY PREVROLL LOGIC
+    if (rerollSection) {
+      for (const [key, value] of Object.entries(this.pvnkDetails)) {
+        if (key === rerollSection) {
+          const numToRoll = this.randomNumber.getRandomNumber(0, this.randomTables[key].length - 1);
+          this.pvnkDetails[key] = this.randomTables[key][numToRoll];
+        }
+      }
+    } else {
+      for (const [key, value] of Object.entries(this.pvnkDetails)) {
         const numToRoll = this.randomNumber.getRandomNumber(0, this.randomTables[key].length - 1);
         this.pvnkDetails[key] = this.randomTables[key][numToRoll];
+      }
     }
   }
 
-  getPvnkOrigin() {
-    this.originExtra = '';
-    this.originIntro = '';
-    this.originResult = '';
+  getPvnkOrigin(rollOrigin?: boolean , rollExtra?: boolean) {
     switch(true) {
       case this.pvnkClass.includes('nanomancer') : {
+        this.originExtra = '';
         this.originIntro = 'You got infected when ';
-        this.originResult = NANOMANCER_ORIGIN[this.randomNumber.getRandomNumber(0, NANOMANCER_ORIGIN.length - 1)];
+
+        const rolledNum = this.randomNumber.getRandomNumber(0, NANOMANCER_ORIGIN.length - 1, this.prevOrigin);
+        this.prevOrigin = rolledNum;
+        this.originResult = NANOMANCER_ORIGIN[rolledNum];
         break;
       }
       case this.pvnkClass.includes('hacker') : {
+        this.originExtra = '';
         this.originIntro = 'On a deep dive of the Cyber Cosmos, you’ve found a terrible truth: ';
-        this.originResult = HACKER_ORIGINS[this.randomNumber.getRandomNumber(0, HACKER_ORIGINS.length - 1)];
+
+        const rolledNum = this.randomNumber.getRandomNumber(0, HACKER_ORIGINS.length - 1, this.prevOrigin);
+        this.prevOrigin = rolledNum;
+        this.originResult = HACKER_ORIGINS[rolledNum];
         break;
       }
       case this.pvnkClass.includes('killer') : {
         this.originIntro = 'You were deployed ';
-        this.originResult = KILLER_ORIGINS[this.randomNumber.getRandomNumber(0, KILLER_ORIGINS.length - 1)];
+
+        const rolledNum = this.randomNumber.getRandomNumber(0, KILLER_ORIGINS.length - 1, this.prevOrigin);
+        this.prevOrigin = rolledNum;
+        this.originResult = KILLER_ORIGINS[rolledNum];
         this.originExtra = ` Your training means that your <strong>autofire tests are always -1DR</strong>. The Corp wants you <strong>dead</strong>.`
         break;
       }
       case this.pvnkClass.includes('gearhead') : {
         this.originIntro = 'You trusted people and they ';
-        this.originResult = GEARHEAD_ORIGINS[this.randomNumber.getRandomNumber(0, GEARHEAD_ORIGINS.length - 1)];
+
+        const rolledNum = this.randomNumber.getRandomNumber(0, GEARHEAD_ORIGINS.length - 1, this.prevOrigin);
+        this.prevOrigin = rolledNum;
+        this.originResult = GEARHEAD_ORIGINS[rolledNum];
         this.originExtra = ` Because of this, you <strong>prefer machines</strong>. You test Knowledge DR10 when you try to repair a piece of tech or to pilot a vehicle, drone or other machine.`;
         break;
       }
       case this.pvnkClass.includes('cyberslasher') : {
+        this.originExtra = '';
         this.originIntro = 'You try to start each day with ';
-        this.originResult = CYBERSLASHER_ORIGINS[this.randomNumber.getRandomNumber(0, CYBERSLASHER_ORIGINS.length - 1)];
+
+        const rolledNum = this.randomNumber.getRandomNumber(0, CYBERSLASHER_ORIGINS.length - 1, this.prevOrigin);
+        this.prevOrigin = rolledNum;
+        this.originResult = CYBERSLASHER_ORIGINS[rolledNum];
         break;
       }
       case this.pvnkClass.includes('forsaken') : {
-        this.originIntro = 'Your gang ';
-        this.originResult = FORSAKEN_ORIGINS[this.randomNumber.getRandomNumber(0, FORSAKEN_ORIGINS.length - 1)];
+        if (!rollExtra) {
+          this.originIntro = 'Your gang ';
 
-        // need to add reroll mechanic to this
-        const specialization = FORSAKEN_EXTRA[this.randomNumber.getRandomNumber(0, FORSAKEN_EXTRA.length - 1)];
-        this.originExtra = ` You are also <strong>stealthy</strong>, all Presence and Agility tests are –2DR, and you specialized in ${specialization}`        
+          const rolledNum = this.randomNumber.getRandomNumber(0, FORSAKEN_ORIGINS.length - 1, this.prevOrigin);
+          this.prevOrigin = rolledNum;
+          this.originResult = FORSAKEN_ORIGINS[rolledNum];
+        }
+
+        if (!rollOrigin) {
+          const specialization = FORSAKEN_EXTRA[this.randomNumber.getRandomNumber(0, FORSAKEN_EXTRA.length - 1)];
+          this.originExtra = ` You are also <strong>stealthy</strong>, all Presence and Agility tests are –2DR, and you specialized in ${specialization}`        
+        }
         break;
       }
       default: {

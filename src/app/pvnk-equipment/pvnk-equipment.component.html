@@ -1,7 +1,7 @@
 <span class="card">
     <span class="card-title">
         <strong>
-            <span class="clickable">
+            <span class="clickable" (click)="rollEquipment()">
                 EQUIPMENT
             </span>
         </strong>
@@ -10,7 +10,7 @@
     <span class="card-body">
         <ul>
             <li *ngFor="let equip of equipment">
-                <span [innerHtml]="equip | safeHtml"></span>
+                <span (click)="reRollEquip(equip.key)" [innerHtml]="equip.value | safeHtml"></span>
             </li>
         </ul>
     </span>
