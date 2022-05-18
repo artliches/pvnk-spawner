@@ -123,7 +123,6 @@ export class AppComponent implements OnInit {
     this.chosenPvnk = this.getAPvnk();
     this.getAbilityMods();
     if (reroll) {
-      console.log(reroll);
       this.nano = [];
       this.apps = [];
       this.cyberTech = [];
@@ -140,47 +139,63 @@ export class AppComponent implements OnInit {
     return newPvnk;
   }
 
-  getAbilityMods() {
-    for (const [key, value] of Object.entries(this.abilities)) {
-      value.value = this.randomRoller.rollMultipleDice(3,6);
-      if (this.chosenPvnk.abilityMods.hasOwnProperty(value.name)) {
-        value.value = value.value + this.chosenPvnk.abilityMods[value.name];
-      }
+  assignAbilityValue(value: {
+    name: string;
+    value: number;
+    descrip: string;
+  } ) {
+  value.value = this.randomRoller.rollMultipleDice(3,6);
+  if (this.chosenPvnk.abilityMods.hasOwnProperty(value.name)) {
+    value.value = value.value + this.chosenPvnk.abilityMods[value.name];
+  }
 
-      switch(true) {
-        case value.value <= 4: {
-          value.value = -3;
-          break;
-        }
-        case value.value >= 5 && value.value <= 6: {
-          value.value = -2;
-          break;
-        }
-        case value.value >= 7 && value.value <= 8: {
-          value.value = -1;
-          break;
-        }
-        case value.value >= 9 && value.value <=12: {
-          value.value = 0;
-          break;
-        }
-        case value.value >= 13 && value.value <=14: {
-          value.value = +1;
-          break;
-        }
-        case value.value >= 15 && value.value <=16: {
-          value.value = +2;
-          break;
-        }
-        case value.value >= 17 && value.value <=20: {
-          value.value = +3;
-          break;
+  switch(true) {
+    case value.value <= 4: {
+      value.value = -3;
+      break;
+    }
+    case value.value >= 5 && value.value <= 6: {
+      value.value = -2;
+      break;
+    }
+    case value.value >= 7 && value.value <= 8: {
+      value.value = -1;
+      break;
+    }
+    case value.value >= 9 && value.value <=12: {
+      value.value = 0;
+      break;
+    }
+    case value.value >= 13 && value.value <=14: {
+      value.value = +1;
+      break;
+    }
+    case value.value >= 15 && value.value <=16: {
+      value.value = +2;
+      break;
+    }
+    case value.value >= 17 && value.value <=20: {
+      value.value = +3;
+      break;
+    }
+  }
+
+  if (value.name === 'toughness') {
+    this.hp = value.value + this.randomRoller.getRandomNumber(1, this.chosenPvnk.abilityMods.hp);
+    this.hp = this.hp <= 0 ? 1 : this.hp;
+  }
+};
+
+  getAbilityMods(specificAbility?: string) {
+    if (specificAbility) {
+      for (const [key, value] of Object.entries(this.abilities)) {
+        if (value.name === specificAbility) {
+          this.assignAbilityValue(value);
         }
       }
-
-      if (value.name === 'toughness') {
-        this.hp = value.value + this.randomRoller.getRandomNumber(1, this.chosenPvnk.abilityMods.hp);
-        this.hp = this.hp < 0 ? 0 : this.hp;
+    } else {
+      for (const [key, value] of Object.entries(this.abilities)) {
+        this.assignAbilityValue(value);
       }
     }
   }
@@ -196,7 +211,6 @@ export class AppComponent implements OnInit {
 
     if (event.cyber.length) {
       this.cyberTech.push(event.cyber);
-      console.log(this.cyberTech);
     }
   }
 }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { RandomNumberService } from '../services/random-number.service';
-import { APPS, ARMOR, BURNED_APPS, CYBERTECH, INFESTATION, NANO, START1, START2, START3, WEAPONS } from '../services/random-tables.constant';
+import { APPS, ARMOR, BURNED_APPS, CYBERSLASHER_EXTRA, CYBERTECH, GEARHEAD_EXTRA, INFESTATION, KILLER_EXTRA, NANO, NANOMANCER_EXTRA, START1, START2, START3, WEAPONS } from '../services/random-tables.constant';
 
 @Component({
   selector: 'app-pvnk-equipment',
@@ -10,6 +10,7 @@ import { APPS, ARMOR, BURNED_APPS, CYBERTECH, INFESTATION, NANO, START1, START2,
 export class PvnkEquipmentComponent implements OnInit, OnChanges {
     @Input() reroll = false;
     @Input() equipMods: any;
+    @Input() pvnkClass: string = '';
     @Output() onCyberNanoApp: EventEmitter<any> = new EventEmitter<any>();
     equipment: any[] = [];
     equipArray = {
@@ -36,12 +37,18 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.equipment = [];
+      const creds = this.randomNumber.rollMultipleDice(2, 6) * 10;
+    this.equipment = [
+        `${creds}¤ on an <strong>anonymous credstick</strong>`,
+        `some <strong>cheap clothes</strong>`,
+        `a <strong>Retinal Com Device ( R C D )</strong>`
+    ];
     this.nano = {};
     this.app = [];
     this.cyberTech = '';
       
     this.getEquipment();
+    this.getClassSpecificEquipment();
   }
 
     private getEquipment() {
@@ -59,7 +66,6 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
             if (value[numToRoll].includes('cybertech')) {
                 if (!this.equipMods.hasOwnProperty('nano') && !this.equipMods.hasOwnProperty('apps')) {
                     this.getCybertech();
-                    console.log('cybertech rolled');
                 } else if(this.equipMods.hasOwnProperty('apps')) {
                     this.getApp();
                 } else if (this.equipMods.hasOwnProperty('nano')) {
@@ -145,6 +151,30 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
             power: NANO[nanoNum],
             infestation: INFESTATION[infectionNum]
         };
+    }
+
+    getClassSpecificEquipment() {
+        switch(true) {
+            case this.pvnkClass.includes('nanomancer') : {
+                this.equipment.push(NANOMANCER_EXTRA[this.randomNumber.getRandomNumber(0, NANOMANCER_EXTRA.length - 1)]);
+              break;
+            }
+            case this.pvnkClass.includes('killer') : {
+                this.equipment.push(KILLER_EXTRA[this.randomNumber.getRandomNumber(0, KILLER_EXTRA.length - 1)]);
+              break;
+            }
+            case this.pvnkClass.includes('gearhead') : {
+                this.equipment.push(GEARHEAD_EXTRA[this.randomNumber.getRandomNumber(0, GEARHEAD_EXTRA.length - 1)]);
+              break;
+            }
+            case this.pvnkClass.includes('cyberslasher') : {
+                this.equipment.push(CYBERSLASHER_EXTRA[this.randomNumber.getRandomNumber(0, CYBERSLASHER_EXTRA.length - 1)]);
+              break;
+            }
+            default: {
+              break;
+            }
+          }
     }
 
   emitData() {

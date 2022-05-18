@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: min-content auto;
-    grid-gap: 1rem;
+    grid-gap: 0.5rem;
     border-bottom: 1px solid black;
     padding: 1rem 0rem 1rem 0rem;
     .card-title {
@@ -20,6 +20,14 @@
     background-color: black;
     color: white;
     cursor: pointer;
+    transition: all .2s ease-in-out; 
+
+    &:hover {
+        background-color: lightslategray;
+    }
+    // &:active {
+    //     padding: 1rem;
+    // }
 }
 
 ul {

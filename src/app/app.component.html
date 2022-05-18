@@ -4,9 +4,9 @@
     <strong>sudo rm -rf</strong>
   </button>
   <app-pvnk-identity [pvnk]="chosenPvnk" [hp]="hp"></app-pvnk-identity>
-  <app-pvnk-abilities [abilities]="abilities"></app-pvnk-abilities>
-  <app-pvnk-details [reroll]="reroll"></app-pvnk-details>
-  <app-pvnk-equipment [reroll]="reroll" [equipMods]="equipMods" (onCyberNanoApp)="getCyberNanoApp($event)"></app-pvnk-equipment>
+  <app-pvnk-abilities (reRollEvent)="getAbilityMods($event)" [abilities]="abilities"></app-pvnk-abilities>
+  <app-pvnk-details [pvnkClass]="chosenPvnk.name" [reroll]="reroll"></app-pvnk-details>
+  <app-pvnk-equipment [pvnkClass]="chosenPvnk.name" [reroll]="reroll" [equipMods]="equipMods" (onCyberNanoApp)="getCyberNanoApp($event)"></app-pvnk-equipment>
   <app-pvnk-cybertech *ngIf="cyberTech.length" [cyberTech]="cyberTech"></app-pvnk-cybertech>
   <app-pvnk-nano *ngIf="nano.length" [nano]="nano"></app-pvnk-nano>
   <app-pvnk-apps *ngIf="apps.length" [apps]="apps"></app-pvnk-apps>
