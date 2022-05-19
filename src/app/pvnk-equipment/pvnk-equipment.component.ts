@@ -218,7 +218,7 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
             }
         }
 
-        if (value.value.includes('Cyberdeck')) {
+        if (value.value.includes('Cyberdeck') && !value.value.includes('Knowledge')) {
             if (this.equipMods.hasOwnProperty('nano')) {
                 this.getNano();
                 value.value = value.value + ' <em>(replaced with a random Nano)</em>';
@@ -234,15 +234,10 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
     }
 
     private getApp(burned?: boolean) {
-        const rolledApp = burned ?
-            this.randomNumber.getRandomNumber(0, BURNED_APPS.length - 1, this.prevAppBurned) :
-            this.randomNumber.getRandomNumber(0, APPS.length - 1, this.prevApp);
         if (burned) {
-            this.prevAppBurned = rolledApp;
-            this.app.push(BURNED_APPS[rolledApp]);
+            this.app.push(this.weirdService.getBurnedApps());
         } else {
-            this.prevApp = rolledApp;
-            this.app.push(APPS[rolledApp]);
+            this.app.push(this.weirdService.getApps());
         }
     }
 

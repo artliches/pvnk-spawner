@@ -1,12 +1,12 @@
 <span class="card">
     <span class="card-title">
-        <strong>APPS</strong>
+        <strong class="clickable" (click)="rerollApp()">APPS</strong>
         <em>Jack into your deck and slot in an App. While jacked in, all non-App actions +2DR. Test DR12 Knowledge to use Apps. Fumble burns the App for the day + trigger Backlash (pg. 72). Each App use adds +1 to Fumble when using Apps until next day.</em>
     </span>
 
     <span class="card-body">
-        <span *ngFor="let app of apps">
-            <span [innerHtml]="app | safeHtml"></span>
+        <span *ngFor="let app of apps; let i = index">
+            <span (click)="rerollApp(i)" [innerHtml]="app | safeHtml"></span>
         </span>
     </span>
 </span>
