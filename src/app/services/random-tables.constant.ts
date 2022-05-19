@@ -145,7 +145,7 @@ export const QUIRK = [
     'pick your nose',
     'always be rapidly blinking',
     'reek of lighter fluid',
-    'scratche at a facial scar',
+    'scratch at a facial scar',
     'be twitchy',
     'wheeze',
 ];
