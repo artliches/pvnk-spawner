@@ -201,8 +201,8 @@ export class AppComponent implements OnInit {
   }
 
   getCyberNanoApp(event: any) {
-    if (event.nano.hasOwnProperty('power')) {
-      this.nano.push(event.nano);
+    if (event.nano.length) {
+      this.nano = event.nano;
     }
 
     if (event.apps.length) {
@@ -210,7 +210,7 @@ export class AppComponent implements OnInit {
     }
 
     if (event.cyber.length) {
-      this.cyberTech.push(event.cyber);
+      this.cyberTech = event.cyber;
     }
   }
 }

@@ -226,7 +226,7 @@ export const START2 = [
     '<strong class="clickable">Grappling-hook crossbow</strong>, d4 damage.',
     'Small bottle of <strong class="clickable">pulverized acid</strong>.',
     '<strong class="clickable">Crime scene kit</strong>.',
-    'Random cybertech, roll d10',
+    'Random <strong class="clickable">cybertech</strong>',
 ];
 
 export const START3 = [
@@ -239,9 +239,9 @@ export const START3 = [
     '<strong class="clickable">Noisemaker</strong>. floods 20m area with fake data for d4 minutes, making remote communication and surveillance impossible.',
     '<strong class="clickable">Fake ID</strong>. Good enough to pass a random check, might not work if they are looking for you.',
     '<strong class="clickable">Visionvisor</strong>. zoom, camera, heat/night vision, ultrasound.',
-    'Random cybertech, roll d10',
+    'Random <strong class="clickable">cybertech</strong>',
     '<strong class="clickable">Cyberdeck</strong> with d3 slots and 2 random Apps.',
-    'A random nano power.',
+    'A random <strong class="clickable">nano</strong> power.',
 ];
 
 export const WEAPONS = [
