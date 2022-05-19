@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1652912113529,
+  "timestamp": 1652972942917,
   "index": "/pvnk-spawner/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/pvnk-spawner/favicon.ico",
         "/pvnk-spawner/index.html",
-        "/pvnk-spawner/main.75c8de2b064e364e.js",
+        "/pvnk-spawner/main.5c7dfed9a3afc3f9.js",
         "/pvnk-spawner/manifest.webmanifest",
         "/pvnk-spawner/polyfills.e6bb52ff8dbbc2fc.js",
         "/pvnk-spawner/runtime.7ed6e49bf7c6d355.js",
@@ -52,8 +52,8 @@
     "/pvnk-spawner/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/pvnk-spawner/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/pvnk-spawner/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/pvnk-spawner/index.html": "3f686692ad7969616fec21aedee6aa8469baf9bc",
-    "/pvnk-spawner/main.75c8de2b064e364e.js": "16a6ce58dc6c62f790ec96ca38a4d3c63230c548",
+    "/pvnk-spawner/index.html": "c1c13e8c4f6844f31f86a8bb711b4d0e89a43e2b",
+    "/pvnk-spawner/main.5c7dfed9a3afc3f9.js": "6c82353c733c9daf8985cf05f5b59b14bcfd6c81",
     "/pvnk-spawner/manifest.webmanifest": "77dbdda24604872d8a9e5abc76d2c732719f6bce",
     "/pvnk-spawner/polyfills.e6bb52ff8dbbc2fc.js": "f296049169f01dd59b99767e143ed53165226a89",
     "/pvnk-spawner/runtime.7ed6e49bf7c6d355.js": "58a2ec3e96f94189895f0ed336b73616b811dc9a",
