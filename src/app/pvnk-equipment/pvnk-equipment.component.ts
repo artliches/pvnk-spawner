@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AppCyberNanoService } from '../services/app-cyber-nano.service';
 import { RandomNumberService } from '../services/random-number.service';
 import { APPS, ARMOR, BURNED_APPS, CYBERSLASHER_EXTRA, CYBERTECH, GEARHEAD_EXTRA, INFESTATION, KILLER_EXTRA, NANO, NANOMANCER_EXTRA, START1, START2, START3, WEAPONS } from '../services/random-tables.constant';
 
@@ -46,7 +47,8 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
     prevCybertech = -1;
 
   constructor(
-      private randomNumber: RandomNumberService
+      private randomNumber: RandomNumberService,
+      private weirdService: AppCyberNanoService,
   ) { }
 
   ngOnInit(): void {
@@ -251,15 +253,7 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
     }
 
     private getNano() {
-        const nanoNum = this.randomNumber.getRandomNumber(0, 9, this.prevNano);
-        const infectionNum = this.randomNumber.getRandomNumber(0, 9, this.prevInfection);
-
-        this.prevNano = nanoNum;
-        this.prevInfection = infectionNum;
-        this.nano.push({
-            power: NANO[nanoNum],
-            infestation: INFESTATION[infectionNum]
-        });
+        this.nano.push(this.weirdService.getNano());
     }
 
     getClassSpecificEquipment() {
