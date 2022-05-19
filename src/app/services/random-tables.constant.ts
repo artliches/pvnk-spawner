@@ -152,7 +152,7 @@ export const QUIRK = [
 
 export const OBSESSION = [
     'adrenaline',
-    'ai poetry',
+    'AI poetry',
     'ammonium chloride candy',
     'ancient grimoires',
     'arachnids',

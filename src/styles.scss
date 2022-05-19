@@ -26,6 +26,7 @@
     color: white;
     cursor: pointer;
     transition: all .2s ease-in-out; 
+    user-select: none;
 
     &:hover {
         background-color: lightslategray;

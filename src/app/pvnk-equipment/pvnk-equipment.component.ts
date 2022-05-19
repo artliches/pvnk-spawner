@@ -57,6 +57,7 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
   }
 
   reRollEquip(equip: any) {
+      // check if removing keywords nano, cybertech, Cyberdeck
       const standardEquipKeys = Object.keys(this.equipArray).includes(equip);
       const equipObj = standardEquipKeys ? this.equipArray : this.classSpecificEquipObj;
 
@@ -73,6 +74,43 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
           
           this.equipment.map(result => {
               if (result.key === equip) {
+                  const prevEquipment = result.value;
+
+                  if (prevEquipment.includes('Cyberdeck') || prevEquipment.includes('cybertech') || prevEquipment.includes('nano')) {
+                    switch (true) {
+                        case prevEquipment.includes('Cyberdeck'): {
+                            if (this.equipMods.hasOwnProperty('nano')) {
+                                this.nano.splice(this.nano.length - 1);
+                            } else if (this.equipMods.hasOwnProperty('cybertech')) {
+                                this.cyberTech.splice(this.cyberTech.length - 1);
+                            } else {
+                                this.app.splice(this.app.length - 2);
+                            }
+                            break;
+                        }
+                        case prevEquipment.includes('cybertech'): {
+                            if (this.equipMods.hasOwnProperty('nano')) {
+                                this.nano.splice(this.nano.length - 1);
+                            } else if (this.equipMods.hasOwnProperty('apps')) {
+                                this.app.splice(this.app.length - 1);
+                            } else {
+                                this.cyberTech.splice(this.cyberTech.length - 1);
+                            }
+                            break;
+                        }
+                        case prevEquipment.includes('nano'): {
+                            if (this.equipMods.hasOwnProperty('cybertech')) {
+                                this.cyberTech.splice(this.cyberTech.length - 1);
+                            } else if (this.equipMods.hasOwnProperty('apps')) {
+                                this.app.splice(this.app.length - 1);
+                            } else {
+                                this.nano.splice(this.nano.length - 1);
+                            }
+                            break;
+                        }
+                    }
+                  }
+
                   const index = this.randomNumber.getRandomNumber(0, upperNum - 1, this.prevRollObj[key]);
                   this.prevRollObj[key] = index;
                   result.value = value[index  + armorMod];
@@ -80,6 +118,12 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
           });
         }
     }
+    for (const [key, value] of Object.entries(this.equipment)) {
+        if (key === equip) {
+            this.addAppsCyberNano(value);
+        }
+    }
+    this.emitData();
 
   }
 
@@ -116,63 +160,66 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
             this.equipment.push({key: key, value: value[numToRoll + armorMod]});
         }
 
-        // add apps, cybertech, and nano if randomly rolled
-        for (const [key, value] of Object.entries(this.equipment)) {
-            if (value.value.includes('cybertech')) {
-                if (this.equipMods.hasOwnProperty('apps')) {
-                    this.getApp();
-                    value.value = value.value + ' <em>(replaced with a random App)</em>'
-                } else if (this.equipMods.hasOwnProperty('nano')) {
-                    this.getNano();
-                    value.value = value.value + ' <em>(replaced with a random Nano)</em>'
-                } else {
-                    this.getCybertech();
-                }
-            }
-
-            if (value.value.includes('nano')) {
-                if (this.equipMods.hasOwnProperty('apps')) {
-                    this.getApp();
-                    value.value = value.value + ' <em>(replaced with a random App)</em>'
-                } else if (this.equipMods.hasOwnProperty('cybertech')) {
-                    this.getCybertech();
-                    value.value = value.value + ' <em>(replaced with a random Cybertech)</em>'
-                } else {
-                    this.getNano();
-                }
-            }
-
-            if (value.value.includes('Cyberdeck')) {
-                if (this.equipMods.hasOwnProperty('nano')) {
-                    this.getNano();
-                    value.value = value.value + ' <em>(replaced with a random Nano)</em>'
-                } else if (this.equipMods.hasOwnProperty('cybertech')) {
-                    this.getCybertech();
-                    value.value = value.value + ' <em>(replaced with a random Cybertech)</em>'
-                } else {
-                    for (let i = 0; i < 2; i++) {
-                        this.getApp();
-                    }
-                }
-            }
-        }
-
         // get extra apps, cybertech, nano if class includes it
         if (this.equipMods.hasOwnProperty('nano')) {
             this.getNano();
         }
 
         if (this.equipMods.hasOwnProperty('apps')) {
-            this.getApp();
             this.getApp(true);
-            
+            this.getApp();
             this.equipment.push({key: '', value: '<strong>Cyberdeck</strong> with Knowledge+4 slots'});
         }
 
         if (this.equipMods.hasOwnProperty('cybertech')) {
             this.getCybertech();
         }
+
+        // add apps, cybertech, and nano if randomly rolled
+        for (const [key, value] of Object.entries(this.equipment)) {
+            this.addAppsCyberNano(value);
+        }
         this.emitData();
+    }
+
+    private addAppsCyberNano(value: any) {
+        if (value.value.includes('cybertech')) {
+            if (this.equipMods.hasOwnProperty('apps')) {
+                this.getApp();
+                value.value = value.value + ' <em>(replaced with a random App)</em>';
+            } else if (this.equipMods.hasOwnProperty('nano')) {
+                this.getNano();
+                value.value = value.value + ' <em>(replaced with a random Nano)</em>';
+            } else {
+                this.getCybertech();
+            }
+        }
+
+        if (value.value.includes('nano')) {
+            if (this.equipMods.hasOwnProperty('apps')) {
+                this.getApp();
+                value.value = value.value + ' <em>(replaced with a random App)</em>';
+            } else if (this.equipMods.hasOwnProperty('cybertech')) {
+                this.getCybertech();
+                value.value = value.value + ' <em>(replaced with a random Cybertech)</em>';
+            } else {
+                this.getNano();
+            }
+        }
+
+        if (value.value.includes('Cyberdeck')) {
+            if (this.equipMods.hasOwnProperty('nano')) {
+                this.getNano();
+                value.value = value.value + ' <em>(replaced with a random Nano)</em>';
+            } else if (this.equipMods.hasOwnProperty('cybertech')) {
+                this.getCybertech();
+                value.value = value.value + ' <em>(replaced with a random Cybertech)</em>';
+            } else {
+                for (let i = 0; i < 2; i++) {
+                    this.getApp();
+                }
+            }
+        }
     }
 
     private getApp(burned?: boolean) {
