@@ -213,4 +213,8 @@ export class AppComponent implements OnInit {
       this.cyberTech = event.cyber;
     }
   }
+
+  print() {
+    window.print();
+  }
 }

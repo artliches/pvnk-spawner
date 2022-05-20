@@ -57,12 +57,33 @@ body {
     }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
     .card {
         .card-title {
             em {
                 font-size: 0.8em;
             }
+        }
+    }
+}
+
+@media print {
+    .card {
+        border-bottom: none;
+        &.legal, &.apps, &.cybertech, &.nano {
+            border-top: 1px solid black;
+        }
+        &.details {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        &.equipment {
+            border-left: 1px solid black;
+            padding-left: 1rem;
+        }
+        &.legal {
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
     }
 }

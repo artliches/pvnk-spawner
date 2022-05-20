@@ -1,6 +1,6 @@
 <span class="pvnk-grid">
-  <h1 class="title">pvnk.spawner_v0.92</h1>
-  <span class="clickable mass-reroll" (click)="assignPvnk(true)">
+  <h1 class="title no-print">pvnk.spawner_v0.92</h1>
+  <span class="clickable mass-reroll no-print" (click)="assignPvnk(true)">
     <strong>sudo rm -rf</strong>
   </span>
   <app-pvnk-identity class="identity" [pvnk]="chosenPvnk" [hp]="hp"></app-pvnk-identity>
@@ -12,8 +12,9 @@
   <app-pvnk-apps class="apps" [isHacker]="chosenPvnk.name === 'burned hacker'" *ngIf="apps.length" [apps]="apps"></app-pvnk-apps>
   <span class="footer">
     <span class="legal card">
+      <span class="clickable no-print print-pvnk" (click)="print()"><strong>print-a-pvnk</strong></span>
       <div>pvnk.spawner is an independent production by <a target="_blank" href="https://twitter.com/codeLiches" class="clickable">@codeLiches</a> and is not affiliated with Stockholm Kartell. It is published under the CY_BORG Third Party License.</div>
-      <div>CY_BORG IS ©2022 STOCKHOLM KARTELL.</div>
+      <div class="copyright">CY_BORG IS ©2022 STOCKHOLM KARTELL.</div>
     </span>
   </span>
 </span>
