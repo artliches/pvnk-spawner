@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AppCyberNanoService } from '../services/app-cyber-nano.service';
 
 @Component({
@@ -6,14 +6,17 @@ import { AppCyberNanoService } from '../services/app-cyber-nano.service';
   templateUrl: './pvnk-nano.component.html',
   styleUrls: ['./pvnk-nano.component.scss']
 })
-export class PvnkNanoComponent implements OnInit {
+export class PvnkNanoComponent implements OnChanges {
   @Input() nano: any;
 
   constructor(
     private weirdService: AppCyberNanoService
   ) { }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    this.weirdService.currentNano.subscribe(result => {
+      this.nano = result;
+    });
   }
 
   rerollNano() {
@@ -23,14 +26,20 @@ export class PvnkNanoComponent implements OnInit {
     for (let i = 0; i < numNanos; i++) {
       this.nano.push(this.weirdService.getNano());
     }
+    this.updateNano();
   }
 
   rerollPower(index: number) {
     this.nano[index].power = this.weirdService.getNanoPower();
+    this.updateNano();
   }
 
   rerollInfestation(index: number) {
     this.nano[index].infestation = this.weirdService.getInfestation();
+    this.updateNano();
   }
 
+  updateNano() {
+    this.weirdService.updateNano(this.nano);
+  }
 }

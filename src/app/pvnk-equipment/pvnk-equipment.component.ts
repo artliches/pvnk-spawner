@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { AppCyberNanoService } from '../services/app-cyber-nano.service';
 import { RandomNumberService } from '../services/random-number.service';
-import { APPS, ARMOR, BURNED_APPS, CYBERSLASHER_EXTRA, CYBERTECH, GEARHEAD_EXTRA, INFESTATION, KILLER_EXTRA, NANO, NANOMANCER_EXTRA, START1, START2, START3, WEAPONS } from '../services/random-tables.constant';
+import { ARMOR, CYBERSLASHER_EXTRA, GEARHEAD_EXTRA, KILLER_EXTRA, NANOMANCER_EXTRA, START1, START2, START3, WEAPONS } from '../services/random-tables.constant';
 
 @Component({
   selector: 'app-pvnk-equipment',
@@ -55,6 +55,10 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.weirdService.currentNano.subscribe(result => this.nano = result);
+    this.weirdService.currentApps.subscribe(result => this.app = result);
+    this.weirdService.currentCybertech.subscribe(result => this.cyberTech = result);
+
     this.rollEquipment();
   }
 
@@ -183,7 +187,7 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
         }
 
         if (this.equipMods.hasOwnProperty('cybertech')) {
-            this.getCybertech();
+            this.getCybertech(12);
         }
 
         // add apps, cybertech, and nano if randomly rolled
@@ -202,7 +206,7 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
                 this.getNano();
                 value.value = value.value + ' <em>(replaced with a random Nano)</em>';
             } else {
-                this.getCybertech();
+                this.getCybertech(10);
             }
         }
 
@@ -211,7 +215,7 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
                 this.getApp();
                 value.value = value.value + ' <em>(replaced with a random App)</em>';
             } else if (this.equipMods.hasOwnProperty('cybertech')) {
-                this.getCybertech();
+                this.getCybertech(10);
                 value.value = value.value + ' <em>(replaced with a random Cybertech)</em>';
             } else {
                 this.getNano();
@@ -223,7 +227,7 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
                 this.getNano();
                 value.value = value.value + ' <em>(replaced with a random Nano)</em>';
             } else if (this.equipMods.hasOwnProperty('cybertech')) {
-                this.getCybertech();
+                this.getCybertech(10);
                 value.value = value.value + ' <em>(replaced with a random Cybertech)</em>';
             } else {
                 for (let i = 0; i < 2; i++) {
@@ -239,16 +243,18 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
         } else {
             this.app.push(this.weirdService.getApps());
         }
+
+        this.weirdService.updateApps(this.app);
     }
 
-    private getCybertech() {
-        const techToRoll = this.randomNumber.getRandomNumber(0, 9, this.prevCybertech);
-        this.cyberTech.push(CYBERTECH[techToRoll]);
-        this.prevCybertech = techToRoll;
+    private getCybertech(dieSize: number) {
+        this.cyberTech.push(this.weirdService.getCybertech(dieSize));
+        this.weirdService.updateCybertech(this.cyberTech);
     }
 
     private getNano() {
         this.nano.push(this.weirdService.getNano());
+        this.weirdService.updateNano(this.nano);
     }
 
     getClassSpecificEquipment() {

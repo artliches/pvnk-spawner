@@ -1,13 +1,13 @@
 <span class="card">
     <span class="card-title">
         <strong>
-            <span class="clickable">CYBERTECH</span>
+            <span class="clickable" (click)="rerollCybertech()">CYBERTECH</span>
         </strong>
     </span>
     <span class="card-body">
         <ul>
-            <li *ngFor="let tech of cyberTech">
-                <span [innerHtml]="tech | safeHtml"></span>
+            <li *ngFor="let tech of cyberTech; let i = index">
+                <span (click)="rerollCybertech(i)" [innerHtml]="tech | safeHtml"></span>
             </li>
         </ul>
     </span>

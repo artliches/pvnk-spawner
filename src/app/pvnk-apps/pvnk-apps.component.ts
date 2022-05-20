@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AppCyberNanoService } from '../services/app-cyber-nano.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { AppCyberNanoService } from '../services/app-cyber-nano.service';
   templateUrl: './pvnk-apps.component.html',
   styleUrls: ['./pvnk-apps.component.scss']
 })
-export class PvnkAppsComponent implements OnInit {
+export class PvnkAppsComponent implements OnChanges {
   @Input() apps: any;
   @Input() isHacker: boolean = false;
 
@@ -14,7 +14,8 @@ export class PvnkAppsComponent implements OnInit {
     private weirdService: AppCyberNanoService
   ) { }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+      this.weirdService.currentApps.subscribe(result => this.apps = result);
   }
 
   rerollApp(index?: number) {
@@ -33,6 +34,6 @@ export class PvnkAppsComponent implements OnInit {
       this.apps[index] = this.isHacker && index === 0 ?
         this.weirdService.getBurnedApps() : this.weirdService.getApps(); 
     }
+    this.weirdService.updateApps(this.apps);
   }
-
 }
