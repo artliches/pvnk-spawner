@@ -1,15 +1,15 @@
 <span class="pvnk-grid">
-  <h1>pvnk.spawner_v0.91</h1>
+  <h1 class="title">pvnk.spawner_v0.92</h1>
   <span class="clickable mass-reroll" (click)="assignPvnk(true)">
     <strong>sudo rm -rf</strong>
   </span>
-  <app-pvnk-identity [pvnk]="chosenPvnk" [hp]="hp"></app-pvnk-identity>
-  <app-pvnk-abilities (reRollEvent)="getAbilityMods($event)" [abilities]="abilities"></app-pvnk-abilities>
-  <app-pvnk-details [pvnkClass]="chosenPvnk.name" [reroll]="reroll"></app-pvnk-details>
-  <app-pvnk-equipment [pvnkClass]="chosenPvnk.name" [reroll]="reroll" [equipMods]="equipMods" (onCyberNanoApp)="getCyberNanoApp($event)"></app-pvnk-equipment>
-  <app-pvnk-cybertech *ngIf="cyberTech.length" [isSlasher]="chosenPvnk.name === 'renagade cyberslasher'" [cyberTech]="cyberTech"></app-pvnk-cybertech>
-  <app-pvnk-nano *ngIf="nano.length" [nano]="nano"></app-pvnk-nano>
-  <app-pvnk-apps [isHacker]="chosenPvnk.name === 'burned hacker'" *ngIf="apps.length" [apps]="apps"></app-pvnk-apps>
+  <app-pvnk-identity class="identity" [pvnk]="chosenPvnk" [hp]="hp"></app-pvnk-identity>
+  <app-pvnk-abilities class="ability" (reRollEvent)="getAbilityMods($event)" [abilities]="abilities"></app-pvnk-abilities>
+  <app-pvnk-details class="details" [pvnkClass]="chosenPvnk.name" [reroll]="reroll"></app-pvnk-details>
+  <app-pvnk-equipment class="equipment" [pvnkClass]="chosenPvnk.name" [reroll]="reroll" [equipMods]="equipMods" (onCyberNanoApp)="getCyberNanoApp($event)"></app-pvnk-equipment>
+  <app-pvnk-cybertech class="cybertech" *ngIf="cyberTech.length" [isSlasher]="chosenPvnk.name === 'renagade cyberslasher'" [cyberTech]="cyberTech"></app-pvnk-cybertech>
+  <app-pvnk-nano class="nano" *ngIf="nano.length" [nano]="nano"></app-pvnk-nano>
+  <app-pvnk-apps class="apps" [isHacker]="chosenPvnk.name === 'burned hacker'" *ngIf="apps.length" [apps]="apps"></app-pvnk-apps>
   <span class="footer">
     <span class="legal card">
       <div>pvnk.spawner is an independent production by <a target="_blank" href="https://twitter.com/codeLiches" class="clickable">@codeLiches</a> and is not affiliated with Stockholm Kartell. It is published under the CY_BORG Third Party License.</div>

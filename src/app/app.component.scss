@@ -6,6 +6,7 @@
     h1 {
         place-self: center;
         margin-bottom: 0.5em;
+        margin-top: 0em;
     }
 
     .mass-reroll {
@@ -15,5 +16,35 @@
 
     .legal {
         font-size: 0.8em;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    $areas: title, mass-reroll, identity, ability, details, equipment, cybertech, nano, apps, footer;
+    .pvnk-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(9, auto);
+        grid-template-areas: 
+            "title          title"
+            "mass-reroll    mass-reroll"
+            "identity       identity"
+            "details        details"
+            "ability        equipment"
+            "apps           apps"
+            "cybertech      cybertech"
+            "nano           nano"
+            "footer         footer";
+        @each $area in $areas {
+            .#{$area} {
+                grid-area: #{$area};
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .pvnk-grid {
+        max-width: 53%;
+        margin: auto;
     }
 }

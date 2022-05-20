@@ -1,3 +1,7 @@
+.card-body {
+    grid-gap: 0.5rem;
+}
+
 .ability-names {
     display: grid;
     grid-template-columns: 1fr;
@@ -7,6 +11,7 @@
         'descrip    score';
     strong {
         grid-area: name;
+        font-size: 1.3em;
     }
     em {
         grid-area: descrip;
@@ -15,5 +20,21 @@
     span.score {
         grid-area: score;
         font-size: 1.8em;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .ability-names {
+        grid-template-columns: 3fr 1fr;
+        span.score {
+            place-self: end;
+            margin-right: 50%;
+        }
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .ability-names {
+        grid-template-columns: 2fr 1fr;
     }
 }

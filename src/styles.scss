@@ -1,18 +1,11 @@
 @font-face {
     font-family: "Roboto Mono";
-    src: local("Roboto Mono"), url(./assets/fonts/RobotoMono-VariableFont_wght.ttf) format("truetype");
+    src: local("Roboto Mono"), url(./assets/fonts/RobotoMono-VariableFont_wght.ttf) format('opentype');
+    font-weight: 100 1000;
 }
 
 body {
     font-family: "Roboto Mono", sans-serif;
-}
-
-a {
-    text-decoration: none;
-}
-
-li {
-    padding-bottom: 0.1em;
 }
 
 .card {
@@ -21,6 +14,10 @@ li {
     grid-template-rows: min-content auto;
     grid-gap: 0.5rem;
     border-bottom: 1px solid black;
+
+    &.legal {
+        border-bottom: none;
+    }
     padding: 1rem 0rem 1rem 0rem;
     .card-title {
         place-self: center;
@@ -39,6 +36,37 @@ li {
     }
 }
 
+@media only screen and (min-width: 768px) {
+    .card {
+        border-bottom: none;
+        &.legal, &.apps, &.cybertech, &.nano {
+            border-top: 1px solid black;
+        }
+        &.details {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        &.equipment {
+            border-left: 1px solid black;
+            padding-left: 1rem;
+        }
+        &.legal {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .card {
+        .card-title {
+            em {
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
 .clickable {
     background-color: black;
     padding: 0rem 0.3rem 0rem 0.3rem;
@@ -50,12 +78,16 @@ li {
     &:hover {
         background-color: lightslategray;
     }
-    // &:active {
-    //     padding: 1rem;
-    // }
 }
 
 ul {
     padding: 0rem;
     margin: 0rem;
+}
+a {
+    text-decoration: none;
+}
+
+li {
+    padding-bottom: 0.1em;
 }

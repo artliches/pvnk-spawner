@@ -13,3 +13,9 @@
     grid-gap: 1rem;
     place-self: center;
 }
+
+@media only screen and (min-width: 768px) {
+    .hp-glitches {
+        font-size: 1.2em;
+    }
+}
