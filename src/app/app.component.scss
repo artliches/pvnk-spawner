@@ -2,11 +2,18 @@
     display: grid;
     grid-template-columns: 1fr;
     width: 99vw;
-    font-size: 1em;
+    font-size: 0.9em;
     h1 {
         place-self: center;
+        margin-bottom: 0.5em;
     }
-    button {
-        border: none;
+
+    .mass-reroll {
+        display: grid;
+        place-self: center;
+    }
+
+    .legal {
+        font-size: 0.8em;
     }
 }

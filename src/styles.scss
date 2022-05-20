@@ -1,6 +1,19 @@
-// body {
-//     font-family: calling-code, sans-serif;
-// }
+@font-face {
+    font-family: "Roboto Mono";
+    src: local("Roboto Mono"), url(./assets/fonts/RobotoMono-VariableFont_wght.ttf) format("truetype");
+}
+
+body {
+    font-family: "Roboto Mono", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    padding-bottom: 0.1em;
+}
 
 .card {
     display: grid;
@@ -11,6 +24,12 @@
     padding: 1rem 0rem 1rem 0rem;
     .card-title {
         place-self: center;
+        .clickable {
+            font-size: 1.5em;
+        }
+        em {
+            font-size: 0.65em;
+        }
     }
     .card-body {
         padding: 0rem 1rem 0rem 1rem;

@@ -34,6 +34,9 @@ export class PvnkDetailsComponent implements OnInit, OnChanges {
         debt: DEBT,
     };
   pvnkName: string = '';
+  prevPvnk = -1;
+  prevNameSection = -1;
+  prevName = -1;
 
   constructor(
       private randomNumber: RandomNumberService
@@ -142,9 +145,13 @@ export class PvnkDetailsComponent implements OnInit, OnChanges {
   }
 
   getName() {
-    const firstName = NAMES[this.randomNumber.getRandomNumber(0, NAMES.length - 1)];
-    const lastName = NAMES[this.randomNumber.getRandomNumber(0, NAMES.length - 1)];
+    const nameSectionIndex = this.randomNumber.getRandomNumber(0, NAMES.length - 1, this.prevNameSection);
+    this.prevNameSection = nameSectionIndex;
 
-    this.pvnkName = `${firstName[this.randomNumber.getRandomNumber(0, firstName.length - 1)]} ${lastName[this.randomNumber.getRandomNumber(0, firstName.length - 1)]}`;
+    const name = NAMES[nameSectionIndex];
+    const nameIndex = this.randomNumber.getRandomNumber(0, name.length - 1, this.prevName);
+    this.prevName = nameIndex;
+
+    this.pvnkName = `${name[nameIndex]}`;
   }
 }
