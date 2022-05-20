@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1653071679965,
+  "timestamp": 1653072614796,
   "index": "/pvnk-spawner/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/pvnk-spawner/favicon.ico",
         "/pvnk-spawner/index.html",
-        "/pvnk-spawner/main.1b21330fca7136d7.js",
+        "/pvnk-spawner/main.479f1d1af6ae682b.js",
         "/pvnk-spawner/manifest.webmanifest",
         "/pvnk-spawner/polyfills.e6bb52ff8dbbc2fc.js",
         "/pvnk-spawner/runtime.7ed6e49bf7c6d355.js",
@@ -32,14 +32,11 @@
         "/pvnk-spawner/RobotoMono-VariableFont_wght.c2fd1c69d0c4ce13.ttf",
         "/pvnk-spawner/assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf",
         "/pvnk-spawner/assets/fonts/RobotoMono-VariableFont_wght.ttf",
-        "/pvnk-spawner/assets/icons/icon-128x128.png",
-        "/pvnk-spawner/assets/icons/icon-144x144.png",
-        "/pvnk-spawner/assets/icons/icon-152x152.png",
-        "/pvnk-spawner/assets/icons/icon-192x192.png",
-        "/pvnk-spawner/assets/icons/icon-384x384.png",
-        "/pvnk-spawner/assets/icons/icon-512x512.png",
-        "/pvnk-spawner/assets/icons/icon-72x72.png",
-        "/pvnk-spawner/assets/icons/icon-96x96.png"
+        "/pvnk-spawner/assets/icons/android-chrome-192x192.png",
+        "/pvnk-spawner/assets/icons/android-chrome-512x512.png",
+        "/pvnk-spawner/assets/icons/apple-touch-icon.png",
+        "/pvnk-spawner/assets/icons/favicon-16x16.png",
+        "/pvnk-spawner/assets/icons/favicon-32x32.png"
       ],
       "patterns": []
     }
@@ -49,18 +46,15 @@
     "/pvnk-spawner/RobotoMono-VariableFont_wght.c2fd1c69d0c4ce13.ttf": "49b4d9fac9359dbe93549548dcf74141e491ad6f",
     "/pvnk-spawner/assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf": "1c6bb76e55fe28a2e8c9a8436dea1414bfc6a75b",
     "/pvnk-spawner/assets/fonts/RobotoMono-VariableFont_wght.ttf": "49b4d9fac9359dbe93549548dcf74141e491ad6f",
-    "/pvnk-spawner/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
-    "/pvnk-spawner/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
-    "/pvnk-spawner/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
-    "/pvnk-spawner/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
-    "/pvnk-spawner/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
-    "/pvnk-spawner/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
-    "/pvnk-spawner/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
-    "/pvnk-spawner/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
-    "/pvnk-spawner/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/pvnk-spawner/index.html": "a2847dacff6e42b6031c86ffca6fbb0f4f83c997",
-    "/pvnk-spawner/main.1b21330fca7136d7.js": "ffa1fe70dddbc466410e54e7384bd85c052aab11",
-    "/pvnk-spawner/manifest.webmanifest": "77dbdda24604872d8a9e5abc76d2c732719f6bce",
+    "/pvnk-spawner/assets/icons/android-chrome-192x192.png": "a848f4e034ae77122a0201fc8e21f749d46304f4",
+    "/pvnk-spawner/assets/icons/android-chrome-512x512.png": "245b29d35bad208a39e1e149b00c1f85ced885dd",
+    "/pvnk-spawner/assets/icons/apple-touch-icon.png": "fa60a6e47ccc5415e2aa511f392e9290fe2cd069",
+    "/pvnk-spawner/assets/icons/favicon-16x16.png": "404c9a851c6e9d3ae7c5b8654c7d33f7a2bf5ecf",
+    "/pvnk-spawner/assets/icons/favicon-32x32.png": "924aebbfb03f28e55fdb4de877b34abae5960dbd",
+    "/pvnk-spawner/favicon.ico": "47c27e32fa74c16f2aaaa63065566f083ff77a22",
+    "/pvnk-spawner/index.html": "16b07d06ba2e405fc76fc39b82f13dbeff7ce163",
+    "/pvnk-spawner/main.479f1d1af6ae682b.js": "afbb9363fd45d75b18721942784d04df6dbfbcf4",
+    "/pvnk-spawner/manifest.webmanifest": "b993dc96a28d4cba6d7e07bef820c67a34404a89",
     "/pvnk-spawner/polyfills.e6bb52ff8dbbc2fc.js": "f296049169f01dd59b99767e143ed53165226a89",
     "/pvnk-spawner/runtime.7ed6e49bf7c6d355.js": "58a2ec3e96f94189895f0ed336b73616b811dc9a",
     "/pvnk-spawner/styles.b5665ee6be72a15f.css": "44052e4208f0248c1ffc5cff778d16d1bbaba43b"
