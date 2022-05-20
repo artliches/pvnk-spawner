@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1653069734600,
+  "timestamp": 1653071679965,
   "index": "/pvnk-spawner/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "/pvnk-spawner/favicon.ico",
         "/pvnk-spawner/index.html",
-        "/pvnk-spawner/main.c457b4f476d7a638.js",
+        "/pvnk-spawner/main.1b21330fca7136d7.js",
         "/pvnk-spawner/manifest.webmanifest",
         "/pvnk-spawner/polyfills.e6bb52ff8dbbc2fc.js",
         "/pvnk-spawner/runtime.7ed6e49bf7c6d355.js",
-        "/pvnk-spawner/styles.6ebab9cfa6aa8055.css"
+        "/pvnk-spawner/styles.b5665ee6be72a15f.css"
       ],
       "patterns": []
     },
@@ -58,12 +58,12 @@
     "/pvnk-spawner/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/pvnk-spawner/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/pvnk-spawner/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/pvnk-spawner/index.html": "0795fd8b56837cd38a33dbe2210cd268880f7821",
-    "/pvnk-spawner/main.c457b4f476d7a638.js": "6bc92d04b3af46b9218d0564ac292c6e58e4e26b",
+    "/pvnk-spawner/index.html": "a2847dacff6e42b6031c86ffca6fbb0f4f83c997",
+    "/pvnk-spawner/main.1b21330fca7136d7.js": "ffa1fe70dddbc466410e54e7384bd85c052aab11",
     "/pvnk-spawner/manifest.webmanifest": "77dbdda24604872d8a9e5abc76d2c732719f6bce",
     "/pvnk-spawner/polyfills.e6bb52ff8dbbc2fc.js": "f296049169f01dd59b99767e143ed53165226a89",
     "/pvnk-spawner/runtime.7ed6e49bf7c6d355.js": "58a2ec3e96f94189895f0ed336b73616b811dc9a",
-    "/pvnk-spawner/styles.6ebab9cfa6aa8055.css": "9b2d8a82920b16592445a39b6d87d1d22d45c4b0"
+    "/pvnk-spawner/styles.b5665ee6be72a15f.css": "44052e4208f0248c1ffc5cff778d16d1bbaba43b"
   },
   "navigationUrls": [
     {
