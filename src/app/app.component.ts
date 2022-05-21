@@ -123,7 +123,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.assignPvnk();
-    const theme = localStorage.getItem('theme') || '';
+    const theme = localStorage.getItem('theme') || 'void';
     this.weirdService.updateTheme(theme);
   }
 
