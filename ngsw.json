@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1653072614796,
+  "timestamp": 1653108196009,
   "index": "/pvnk-spawner/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "/pvnk-spawner/favicon.ico",
         "/pvnk-spawner/index.html",
-        "/pvnk-spawner/main.479f1d1af6ae682b.js",
+        "/pvnk-spawner/main.f99371a5fbd29f10.js",
         "/pvnk-spawner/manifest.webmanifest",
         "/pvnk-spawner/polyfills.e6bb52ff8dbbc2fc.js",
         "/pvnk-spawner/runtime.7ed6e49bf7c6d355.js",
-        "/pvnk-spawner/styles.b5665ee6be72a15f.css"
+        "/pvnk-spawner/styles.68c0836e68c5116c.css"
       ],
       "patterns": []
     },
@@ -29,7 +29,16 @@
         "ignoreVary": true
       },
       "urls": [
+        "/pvnk-spawner/Adder.e9c45efb8bd3d0b2.otf",
+        "/pvnk-spawner/Another_Danger.3533b995e7516c93.ttf",
+        "/pvnk-spawner/Cybrpnuk2.a0f84f63891ee028.ttf",
         "/pvnk-spawner/RobotoMono-VariableFont_wght.c2fd1c69d0c4ce13.ttf",
+        "/pvnk-spawner/assets/fonts/Adder.otf",
+        "/pvnk-spawner/assets/fonts/Adder_Extended.otf",
+        "/pvnk-spawner/assets/fonts/Adder_SuperExtended.otf",
+        "/pvnk-spawner/assets/fonts/Another_Danger.ttf",
+        "/pvnk-spawner/assets/fonts/Another_Danger_Slanted.ttf",
+        "/pvnk-spawner/assets/fonts/Cybrpnuk2.ttf",
         "/pvnk-spawner/assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf",
         "/pvnk-spawner/assets/fonts/RobotoMono-VariableFont_wght.ttf",
         "/pvnk-spawner/assets/icons/android-chrome-192x192.png",
@@ -43,7 +52,16 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/pvnk-spawner/Adder.e9c45efb8bd3d0b2.otf": "611bb3e58129dc95bbf91f1b1de84cd1195d781b",
+    "/pvnk-spawner/Another_Danger.3533b995e7516c93.ttf": "542acf0258a12a83f4eec5f2acaa872a6c95b766",
+    "/pvnk-spawner/Cybrpnuk2.a0f84f63891ee028.ttf": "612ac672d1a9dd0695f298c8ed069bed855424a7",
     "/pvnk-spawner/RobotoMono-VariableFont_wght.c2fd1c69d0c4ce13.ttf": "49b4d9fac9359dbe93549548dcf74141e491ad6f",
+    "/pvnk-spawner/assets/fonts/Adder.otf": "611bb3e58129dc95bbf91f1b1de84cd1195d781b",
+    "/pvnk-spawner/assets/fonts/Adder_Extended.otf": "e098563b19a5b7a534940ab58489e1fbcf3e5013",
+    "/pvnk-spawner/assets/fonts/Adder_SuperExtended.otf": "7b4bf5ae4e46c0e46a2697fb3824414f156b4f29",
+    "/pvnk-spawner/assets/fonts/Another_Danger.ttf": "542acf0258a12a83f4eec5f2acaa872a6c95b766",
+    "/pvnk-spawner/assets/fonts/Another_Danger_Slanted.ttf": "8f9470299c559ad6ac71b39d48e40c022d6263fc",
+    "/pvnk-spawner/assets/fonts/Cybrpnuk2.ttf": "612ac672d1a9dd0695f298c8ed069bed855424a7",
     "/pvnk-spawner/assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf": "1c6bb76e55fe28a2e8c9a8436dea1414bfc6a75b",
     "/pvnk-spawner/assets/fonts/RobotoMono-VariableFont_wght.ttf": "49b4d9fac9359dbe93549548dcf74141e491ad6f",
     "/pvnk-spawner/assets/icons/android-chrome-192x192.png": "a848f4e034ae77122a0201fc8e21f749d46304f4",
@@ -52,12 +70,12 @@
     "/pvnk-spawner/assets/icons/favicon-16x16.png": "404c9a851c6e9d3ae7c5b8654c7d33f7a2bf5ecf",
     "/pvnk-spawner/assets/icons/favicon-32x32.png": "924aebbfb03f28e55fdb4de877b34abae5960dbd",
     "/pvnk-spawner/favicon.ico": "47c27e32fa74c16f2aaaa63065566f083ff77a22",
-    "/pvnk-spawner/index.html": "16b07d06ba2e405fc76fc39b82f13dbeff7ce163",
-    "/pvnk-spawner/main.479f1d1af6ae682b.js": "afbb9363fd45d75b18721942784d04df6dbfbcf4",
+    "/pvnk-spawner/index.html": "eb49965929dce6a558a4d9f123c68f8052d88f62",
+    "/pvnk-spawner/main.f99371a5fbd29f10.js": "f7cf13a7816a537e20529427bef3a4db31c88034",
     "/pvnk-spawner/manifest.webmanifest": "b993dc96a28d4cba6d7e07bef820c67a34404a89",
     "/pvnk-spawner/polyfills.e6bb52ff8dbbc2fc.js": "f296049169f01dd59b99767e143ed53165226a89",
     "/pvnk-spawner/runtime.7ed6e49bf7c6d355.js": "58a2ec3e96f94189895f0ed336b73616b811dc9a",
-    "/pvnk-spawner/styles.b5665ee6be72a15f.css": "44052e4208f0248c1ffc5cff778d16d1bbaba43b"
+    "/pvnk-spawner/styles.68c0836e68c5116c.css": "5ab42929516e352ed94979075a6cdc02741b1f00"
   },
   "navigationUrls": [
     {
