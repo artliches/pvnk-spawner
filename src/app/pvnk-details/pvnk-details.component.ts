@@ -60,7 +60,6 @@ export class PvnkDetailsComponent implements OnInit, OnChanges {
   }
 
   public getPvnkDetails(rerollSection?: string) {
-    // NEED TO APPLY PREVROLL LOGIC
     if (rerollSection) {
       for (const [key, value] of Object.entries(this.pvnkDetails)) {
         if (key === rerollSection) {
