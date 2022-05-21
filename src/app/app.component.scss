@@ -1,3 +1,5 @@
+@use '../app/themes';
+
 .pvnk-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -7,6 +9,7 @@
         place-self: center;
         margin-bottom: 0.5em;
         margin-top: 0em;
+        font-family: "Adder", sans-serif;
     }
 
     .mass-reroll {
@@ -20,9 +23,17 @@
 
     .legal {
         font-size: 0.8em;
-        .print-pvnk {
-            place-self: center;
-            font-size: 1.3em;
+        .button-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, 1fr);
+            grid-gap: 0.5rem;
+            place-content: center;
+
+            .print-pvnk, .max-hp-button {
+                place-self: center;
+                font-size: 1.3em;
+            }
         }
         .copyright {
             place-self: center;
@@ -33,6 +44,9 @@
 @media only screen and (min-width: 768px) {
     $areas: title, mass-reroll, identity, ability, details, equipment, cybertech, nano, apps, footer;
     .pvnk-grid {
+        h1 {
+            font-size: 3em;
+        }
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(9, auto);
         grid-template-areas: 
@@ -50,6 +64,13 @@
                 grid-area: #{$area};
             }
         }
+
+        .legal {
+            .button-section {
+                grid-template-rows: 1fr;
+                grid-template-columns: repeat(2, auto);
+            }
+        }
     }
 }
 
@@ -64,7 +85,7 @@
     $areas: title, mass-reroll, identity, ability, details, equipment, cybertech, nano, apps, footer;
     .pvnk-grid {
         max-width:99%;
-        font-size: 9pt;
+        font-size: 8pt;
         .no-print {
             display: none;
         }

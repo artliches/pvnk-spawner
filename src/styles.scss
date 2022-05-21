@@ -1,11 +1,38 @@
+@use '../src/app/themes';
+
 @font-face {
     font-family: "Roboto Mono";
     src: local("Roboto Mono"), url(./assets/fonts/RobotoMono-VariableFont_wght.ttf) format('opentype');
     font-weight: 100 1000;
 }
 
+@font-face {
+    font-family: "Another Danger";
+    src: local("Another Danger"), url(./assets/fonts/Another_Danger.ttf) format('opentype');
+    font-weight: 100 1000;
+}
+
+@font-face {
+    font-family: "Cybrpnuk";
+    src: local("Cybrpnuk"), url(./assets/fonts/Cybrpnuk2.ttf) format('opentype');
+    font-weight: 100 1000;
+}
+
+@font-face {
+    font-family: "Adder";
+    src: local("Adder"), url(./assets/fonts/Adder.otf) format('opentype');
+    font-weight: 100 1000;
+}
+
 body {
     font-family: "Roboto Mono", sans-serif;
+    // font-family: "Cybrpnuk", sans-serif;
+    // font-family: "Adder", sans-serif;
+}
+
+.slasher {
+    font-family: "Another Danger", sans-serif;
+    font-size: 1.3em;
 }
 
 .card {
@@ -13,7 +40,7 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: min-content auto;
     grid-gap: 0.5rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid;
 
     &.legal {
         border-bottom: none;
@@ -40,14 +67,14 @@ body {
     .card {
         border-bottom: none;
         &.legal, &.apps, &.cybertech, &.nano {
-            border-top: 1px solid black;
+            border-top: 1px solid;
         }
         &.details {
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
         }
         &.equipment {
-            border-left: 1px solid black;
+            border-left: 1px solid;
             padding-left: 1rem;
         }
         &.legal {
@@ -67,38 +94,11 @@ body {
     }
 }
 
-@media print {
-    .card {
-        border-bottom: none;
-        &.legal, &.apps, &.cybertech, &.nano {
-            border-top: 1px solid black;
-        }
-        &.details {
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
-        }
-        &.equipment {
-            border-left: 1px solid black;
-            padding-left: 1rem;
-        }
-        &.legal {
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-    }
-}
-
 .clickable {
-    background-color: black;
     padding: 0rem 0.3rem 0rem 0.3rem;
-    color: white;
     cursor: pointer;
     transition: all .2s ease-in-out; 
     user-select: none;
-
-    &:hover {
-        background-color: lightslategray;
-    }
 }
 
 ul {

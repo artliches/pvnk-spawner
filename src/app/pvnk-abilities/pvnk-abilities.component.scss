@@ -26,6 +26,9 @@
 @media only screen and (min-width: 768px) {
     .ability-names {
         grid-template-columns: 3fr 1fr;
+        strong {
+            font-size: 1.1em;
+        }
         span.score {
             place-self: end;
             margin-right: 50%;

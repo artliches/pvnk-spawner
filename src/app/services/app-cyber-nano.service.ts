@@ -16,6 +16,19 @@ export class AppCyberNanoService {
 
     private apps = new BehaviorSubject([]);
     currentApps = this.apps.asObservable();
+
+    private theme = new BehaviorSubject('void');
+    private currThemeId = 0;
+    private themeArray = [
+        'void',
+        'dark',
+        'mork',
+        'hot',
+        'terminal',
+        'malfunction'
+    ];
+    currentTheme = this.theme.asObservable();
+
     prevApp = -1;
     prevBurnedApp = -1;
     prevNano = -1;
@@ -36,6 +49,19 @@ export class AppCyberNanoService {
 
     updateApps(value: any) {
         this.apps.next(value);
+    }
+
+    updateTheme(savedTheme?: string) {
+        if (savedTheme) {
+            this.theme.next(savedTheme);
+        } else {
+            this.currThemeId = this.currThemeId === this.themeArray.length - 1 ?
+            0 : this.currThemeId + 1;
+    
+            const theme = this.themeArray[this.currThemeId];
+            
+            this.theme.next(theme);
+        }
     }
 
     getApps() {

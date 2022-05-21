@@ -1,0 +1,205 @@
+.void {
+    $main-color: black;
+    $main-font-color: black;
+    $clickable-font-color: white;
+    $hover-font-color: black;
+    $hover-background-color: white;
+    .title {
+        color: $main-font-color;
+    }
+    .card {
+        color: $main-color;
+        border-color: $main-color;
+        &.legal, &.apps, &.cybertech, &.nano, &.details, &.equipment {
+            border-color: $main-color;
+        }
+    }
+
+    .clickable {
+        background-color: $main-color;
+        color: $clickable-font-color;
+
+        &:hover {
+            color: $hover-font-color;
+            background-color: $hover-background-color;
+        }
+    }
+}
+
+.dark {
+    $main-color: white;
+    $main-font-color: white;
+    $clickable-font-color: black;
+    $hover-color: darkgrey;
+
+    .title {
+        color: $main-font-color;
+    }
+    .card {
+        color: $main-color;
+        border-color: $main-color;
+        &.legal, &.apps, &.cybertech, &.nano, &.details, &.equipment {
+            border-color: $main-color;
+        }
+    }
+
+    .clickable {
+        background-color: $main-color;
+        color: $clickable-font-color;
+
+        &:hover {
+            background-color: $hover-color;
+        }
+    }
+}
+
+.mork {
+    $main-color: black;
+    $main-font-color: black;
+    $clickable-font-color: black;
+    $hover-font-color: white;
+    $hover-background-color: black;
+    $clickable-background-color: white;
+
+    .title {
+        color: $main-font-color;
+    }
+    .card {
+        color: $main-color;
+        border-color: $main-color;
+        &.legal, &.apps, &.cybertech, &.nano, &.details, &.equipment {
+            border-color: $main-color;
+        }
+    }
+
+    .clickable {
+        background-color: $clickable-background-color;
+        color: $clickable-font-color;
+
+        &:hover {
+            background-color: $hover-background-color;
+            color: $hover-font-color
+        }
+    }
+}
+
+.hot {
+    $main-color: white;
+    $main-font-color: black;
+    $clickable-font-color: black;
+    $hover-font-color: white;
+    $hover-background-color: black;
+    $clickable-background-color: white;
+
+    .title {
+        color: $main-font-color;
+    }
+    .card {
+        color: $main-color;
+        border-color: $main-color;
+        &.legal, &.apps, &.cybertech, &.nano, &.details, &.equipment {
+            border-color: $main-color;
+        }
+    }
+
+    .clickable {
+        background-color: $clickable-background-color;
+        color: $clickable-font-color;
+
+        &:hover {
+            background-color: $hover-background-color;
+            color: $hover-font-color
+        }
+    }
+}
+
+.terminal {
+    $main-color: rgb(138, 234, 146);
+    $main-font-color: #b0e7b4;
+    $clickable-font-color: black;
+    $hover-font-color: #b0e7b4;
+    $hover-background-color: black;
+    $clickable-background-color: #b0e7b4;
+
+    .title {
+        color: $main-font-color;
+    }
+    .card {
+        color: $main-color;
+        border-color: $main-color;
+        &.legal, &.apps, &.cybertech, &.nano, &.details, &.equipment {
+            border-color: $main-color;
+        }
+    }
+
+    .clickable {
+        background-color: $clickable-background-color;
+        color: $clickable-font-color;
+
+        &:hover {
+            background-color: $hover-background-color;
+            color: $hover-font-color
+        }
+    }
+}
+
+.malfunction {
+    $main-color: goldenrod;
+    $main-font-color: rgb(255,0,128);
+    $clickable-font-color: rgb(51, 32, 42);;
+    $hover-font-color: rgb(255,0,128);
+    $hover-background-color: black;
+    $clickable-background-color: cyan;
+
+    .title {
+        color: $main-font-color;
+    }
+    .card {
+        color: $main-color;
+        border-color: $main-color;
+        &.legal, &.apps, &.cybertech, &.nano, &.details, &.equipment {
+            border-color: $main-color;
+        }
+    }
+
+    .clickable {
+        background-color: $clickable-background-color;
+        color: $clickable-font-color;
+
+        &:hover {
+            background-color: $hover-background-color;
+            color: $hover-font-color
+        }
+    }
+}
+
+@media print {
+    .void, .dark, .mork, .hot, .terminal, .malfunction {
+        .title {
+            color: unset;
+        }
+        .card {
+            color: unset;
+            border: none;
+            border-color: unset;
+
+            &.identity, &.details {
+                border-bottom: 1px solid;
+            }
+            &.legal {
+                border-top: 1px solid;
+            }
+            &.equipment {
+                border-left: 1px solid;
+                padding-left: 1rem;
+            }
+            &.nano, &.apps, &.cybertech {
+                border-top: 1px solid;
+            }
+        }
+        .clickable {
+            background-color: black;
+            color: white;
+        }
+    }
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppCyberNanoService } from './services/app-cyber-nano.service';
 import { RandomNumberService } from './services/random-number.service';
 
 @Component({
@@ -79,7 +80,7 @@ export class AppComponent implements OnInit {
     },
     {
       name: 'renagade cyberslasher',
-      flavor: `You are <strong>DEATH</strong> incarnate-afrenzied flurry of chrome, murder, and blood-stained steel. But yours is no mindless rage. You match your trained and cybernetically enhanced body with an equally disciplined mind. <strong>You used to kill for a cause</strong>, for an ideal. Now? You kill for money.`,
+      flavor: `You are <strong class="slasher">DEATH</strong> incarnate-afrenzied flurry of chrome, murder, and blood-stained steel. But yours is no mindless rage. You match your trained and cybernetically enhanced body with an equally disciplined mind. <strong>You used to kill for a cause</strong>, for an ideal. Now? You kill for money.`,
         abilityMods: {
         hp: 10,
         gliches: 'd3',
@@ -111,12 +112,19 @@ export class AppComponent implements OnInit {
   equipMods = {};
   reroll = false;
 
+  $currentTheme = this.weirdService.currentTheme;
+  toughness = 0;
+  maxHp = false;
+
   constructor(
-    private randomRoller: RandomNumberService
+    private randomRoller: RandomNumberService,
+    private weirdService: AppCyberNanoService
   ) {}
 
   ngOnInit(): void {
     this.assignPvnk();
+    const theme = localStorage.getItem('theme') || '';
+    this.weirdService.updateTheme(theme);
   }
 
   assignPvnk(reroll?: boolean) {
@@ -181,6 +189,7 @@ export class AppComponent implements OnInit {
   }
 
   if (value.name === 'toughness') {
+    this.toughness = value.value;
     this.hp = value.value + this.randomRoller.getRandomNumber(1, this.chosenPvnk.abilityMods.hp);
     this.hp = this.hp <= 0 ? 1 : this.hp;
   }
@@ -214,7 +223,23 @@ export class AppComponent implements OnInit {
     }
   }
 
+  setBackground() {
+    const themeBackgrounds: any = {
+      void: 'white',
+      dark: 'black',
+      mork: 'rgb(255, 232, 44)',
+      hot: 'rgb(241, 66, 175)',
+      terminal: 'rgb(51, 32, 42)',
+      malfunction: 'rgb(51, 32, 42)',
+    };
+    const theme = localStorage.getItem('theme') || 'void';
+    document.body.style.backgroundColor = themeBackgrounds[theme];
+
+  }
+
   print() {
+    document.body.style.backgroundColor = 'white';
     window.print();
+    this.setBackground();
   }
 }
