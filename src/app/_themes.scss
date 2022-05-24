@@ -173,8 +173,38 @@
     }
 }
 
+.blues {
+    $main-color: blue;
+    $main-font-color: white;
+    $clickable-font-color: blue;
+    $hover-font-color: white;
+    $hover-background-color: black;
+    $clickable-background-color: white;
+
+    .title {
+        color: $main-font-color;
+    }
+    .card {
+        color: $main-font-color;
+        border-color: $main-color;
+        &.legal, &.apps, &.cybertech, &.nano, &.details, &.equipment {
+            border-color: $main-font-color;
+        }
+    }
+
+    .clickable {
+        background-color: $clickable-background-color;
+        color: $clickable-font-color;
+
+        &:hover {
+            background-color: $hover-background-color;
+            color: $hover-font-color
+        }
+    }
+}
+
 @media print {
-    .void, .dark, .mork, .hot, .terminal, .malfunction {
+    .void, .dark, .mork, .hot, .terminal, .malfunction, .blues {
         .title {
             color: unset;
         }

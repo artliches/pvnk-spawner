@@ -21,7 +21,10 @@ export class PvnkIdentityComponent implements OnInit, OnChanges {
     hot: 'rgb(241, 66, 175)',
     terminal: 'rgb(51, 32, 42)',
     malfunction: 'rgb(51, 32, 42)',
+    blues: 'blue',
   }
+
+  lastGlitch = -1;
 
   constructor(
     private weirdService: AppCyberNanoService,
@@ -41,6 +44,13 @@ export class PvnkIdentityComponent implements OnInit, OnChanges {
     if (this.maxHp) {
       this.hp = this.toughness + this.hpMod;
     }
+  }
+
+  getGlitches() {
+    const glitchMod = this.pvnk.abilityMods.gliches[1];
+    const rolledGlitch = this.randomRoller.getRandomNumber(1, glitchMod, this.lastGlitch);
+    this.lastGlitch = rolledGlitch;
+    return rolledGlitch;
   }
 
   shuffleTheme() {

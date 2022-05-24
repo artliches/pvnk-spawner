@@ -5,11 +5,23 @@
     grid-template-columns: 1fr;
     width: 99vw;
     font-size: 0.9em;
-    h1 {
+    span.title {
+        display: grid;
         place-self: center;
         margin-bottom: 0.5em;
         margin-top: 0em;
-        font-family: "Adder", sans-serif;
+        h1 {
+            font-family: "Adder", sans-serif;
+            margin-bottom: 0rem;
+        }
+        em {
+            font-size: 0.5em;
+            place-self: center;
+        }
+    }
+
+    strong.flavor-font {
+        font-family: "Cybrpnuk", sans-serif;
     }
 
     .mass-reroll {
@@ -25,8 +37,8 @@
         font-size: 0.8em;
         .button-section {
             display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(2, 1fr);
+            grid-template-rows: 1fr;
+            grid-template-columns: repeat(2, auto);
             grid-gap: 0.5rem;
             place-content: center;
 
@@ -62,13 +74,6 @@
         @each $area in $areas {
             .#{$area} {
                 grid-area: #{$area};
-            }
-        }
-
-        .legal {
-            .button-section {
-                grid-template-rows: 1fr;
-                grid-template-columns: repeat(2, auto);
             }
         }
     }

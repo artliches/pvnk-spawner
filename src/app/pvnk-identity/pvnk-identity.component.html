@@ -8,11 +8,11 @@
         <span class="hp-glitches">
             <span>
                 <strong>HP </strong>
-                <span class="clickable" (click)="rerollHp()">{{hp}}</span>
+                <strong class="clickable" (click)="rerollHp()">{{hp}}</strong>
             </span>
             <span>
-                <strong>GLITCHES</strong>
-                {{pvnk.abilityMods.gliches | uppercase}}
+                <strong>GLITCHES </strong>
+                <strong (click)="getGlitches()" class="clickable">{{getGlitches()}}</strong>({{pvnk.abilityMods.gliches | uppercase}})
             </span>
         </span>
     </span>

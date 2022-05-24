@@ -25,7 +25,8 @@ export class AppCyberNanoService {
         'mork',
         'hot',
         'terminal',
-        'malfunction'
+        'malfunction',
+        'blues',
     ];
     currentTheme = this.theme.asObservable();
 

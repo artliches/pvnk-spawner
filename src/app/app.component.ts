@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   specialPvnks = [
     {
       name: 'shunned nanomancer',
-      flavor: `<strong>It\'s inside you</strong>. Infesting your brain, warping your flesh. People are afraid of you now. They\'re afraid of the power that poisons you. <strong>You\'re scared too.</strong>`,
+      flavor: `<strong class="flavor-font">It\'s inside you</strong>. Infesting your brain, warping your flesh. People are afraid of you now. They\'re afraid of the power that poisons you. <strong class="flavor-font">You\'re scared too.</strong>`,
       abilityMods: {
         hp: 4,
         gliches: 'd2',
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
     },
     {
       name: 'burned hacker',
-      flavor: `You were one of the sharpest deckers in Cy. No one could use tech or warp the world with an App like you could. You don\'t know what went wrong. <strong>You messed up.</strong> Maybe you were tricked; maybe you got sloppy. You glimpsed a <strong>terrible truth</strong>, and now you\'re burnt. No collective, no fallback, <strong>nothing</strong>.`,
+      flavor: `You were one of the sharpest deckers in Cy. No one could use tech or warp the world with an App like you could. You don\'t know what went wrong. <strong class="flavor-font">You messed up.</strong> Maybe you were tricked; maybe you got sloppy. You glimpsed a <strong class="flavor-font">terrible truth</strong>, and now you\'re burnt. No collective, no fallback, <strong class="flavor-font">nothing</strong>.`,
       abilityMods: {
         hp: 6,
         gliches: 'd2',
@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
     },
     {
       name: 'discharged corp killer',
-      flavor: `<strong>A good soldier in bad company</strong>, always fighting someone else\'s war in the name of greed. Capitalism crushed your enthusiasm quickly enough, and you were discharged without severance.`,
+      flavor: `<strong class="flavor-font">A good soldier in bad company</strong>, always fighting someone else\'s war in the name of greed. Capitalism crushed your enthusiasm quickly enough, and you were discharged without severance.`,
         abilityMods: {
         hp: 8,
         gliches: 'd2',
@@ -66,7 +66,7 @@ export class AppComponent implements OnInit {
     },
     {
       name: 'orphaned gearhead',
-      flavor: `<strong>People are unreliable.</strong> Socially. Physically. Emotionally. Weakbodies and weaker wills. They are worn down, unfixable. Instead, you have mastered emotionless steel and loyal code. You can fix, drive, and pilot any machine. Machines, you can <strong>trust</strong>.`,
+      flavor: `<strong class="flavor-font">People are unreliable.</strong> Socially. Physically. Emotionally. Weakbodies and weaker wills. They are worn down, unfixable. Instead, you have mastered emotionless steel and loyal code. You can fix, drive, and pilot any machine. Machines, you can <strong class="flavor-font">trust</strong>.`,
         abilityMods: {
         hp: 8,
         gliches: 'd4',
@@ -80,7 +80,7 @@ export class AppComponent implements OnInit {
     },
     {
       name: 'renagade cyberslasher',
-      flavor: `You are <strong class="slasher">DEATH</strong> incarnate-afrenzied flurry of chrome, murder, and blood-stained steel. But yours is no mindless rage. You match your trained and cybernetically enhanced body with an equally disciplined mind. <strong>You used to kill for a cause</strong>, for an ideal. Now? You kill for money.`,
+      flavor: `You are <strong class="slasher">DEATH</strong> incarnate-afrenzied flurry of chrome, murder, and blood-stained steel. But yours is no mindless rage. You match your trained and cybernetically enhanced body with an equally disciplined mind. <strong class="flavor-font">You used to kill for a cause</strong>, for an ideal. Now? You kill for money.`,
         abilityMods: {
         hp: 10,
         gliches: 'd3',
@@ -94,7 +94,7 @@ export class AppComponent implements OnInit {
     },
     {
       name: 'forsaken gang-goon',
-      flavor: `You ran with the only gang to have your back and treat you like more than slum trash. <strong>They were your family</strong>, and you bled, stole, fought, and killed for them. They\'re <strong>gone</strong> now, so you have to keep your edge.`,
+      flavor: `You ran with the only gang to have your back and treat you like more than slum trash. <strong class="flavor-font">They were your family</strong>, and you bled, stole, fought, and killed for them. They\'re <strong class="flavor-font">gone</strong> now, so you have to keep your edge.`,
         abilityMods: {
         hp: 6,
         gliches: 'd3',
@@ -231,6 +231,7 @@ export class AppComponent implements OnInit {
       hot: 'rgb(241, 66, 175)',
       terminal: 'rgb(51, 32, 42)',
       malfunction: 'rgb(51, 32, 42)',
+      blues: 'blue',
     };
     const theme = localStorage.getItem('theme') || 'void';
     document.body.style.backgroundColor = themeBackgrounds[theme];

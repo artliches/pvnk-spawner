@@ -1,7 +1,12 @@
 <span class="pvnk-grid {{$currentTheme | async}}">
-  <h1 class="title no-print">p v n k . s p a w n e r</h1>
+  <span class="title no-print">
+    <h1>p v n k . s p a w n e r</h1>
+    <em>
+      <div>random punk generator for CY_BORG</div>
+    </em>
+  </span>
   <span class="clickable mass-reroll no-print" (click)="assignPvnk(true)">
-    <strong>sudo rm -rf</strong>
+    <strong>click to spawn a new pvnk</strong>
   </span>
   <app-pvnk-identity class="identity" [maxHp]="maxHp" [toughness]="toughness" [hpMod]="chosenPvnk.abilityMods['hp']" [pvnk]="chosenPvnk" [hp]="hp"></app-pvnk-identity>
   <app-pvnk-abilities class="ability" (reRollEvent)="getAbilityMods($event)" [abilities]="abilities"></app-pvnk-abilities>
