@@ -9,16 +9,41 @@ import { RandomNumberService } from './services/random-number.service';
 })
 export class AppComponent implements OnInit {
   abilities = [
-    {name: 'agility', value: 0, descrip: 'Sneak, dodge, drive, autofire'},
-    {name: 'knowledge', value: 0, descrip: 'Science, use tech or App'},
-    {name: 'presence', value: 0, descrip: 'Snipe/shoot, use Nano, charm'},
-    {name: 'strength', value: 0, descrip: 'Strike, grapple, lift, throw'},
-    {name: 'toughness', value: 0, descrip: 'Survive falling, poison, and elements'},
+    {
+      name: 'agility',
+      value: 0,
+      descrip: 'Sneak, dodge, drive, autofire',
+      dropLow: false,
+    },
+    {
+      name: 'knowledge',
+      value: 0,
+      descrip: 'Science, use tech or App',
+      dropLow: false,
+    },
+    {
+      name: 'presence',
+      value: 0,
+      descrip: 'Snipe/shoot, use Nano, charm',
+      dropLow: false,
+    },
+    {
+      name: 'strength',
+      value: 0,
+      descrip: 'Strike, grapple, lift, throw',
+      dropLow: false,
+    },
+    {
+      name: 'toughness',
+      value: 0,
+      descrip: 'Survive falling, poison, and elements',
+      dropLow: false,
+    },
   ];
   chosenPvnk: any;
   hp = 0;
   prevPvnk = -1;
-  specialPvnks = [
+  specialPvnks: any[] = [
     {
       name: 'shunned nanomancer',
       flavor: `<strong class="flavor-font">It\'s inside you</strong>. Infesting your brain, warping your flesh. People are afraid of you now. They\'re afraid of the power that poisons you. <strong class="flavor-font">You\'re scared too.</strong>`,
@@ -106,6 +131,22 @@ export class AppComponent implements OnInit {
       }
     },
   ];
+  classesPvnk = [
+    {
+      name: 'pvnk.classless()',
+      flavor: `<strong class="flavor-font">We should have burned this city centuries ago.</strong> The Nu-Capitalists and Immortal OG Money Aristocrats that rule on high in their glass towers and walled gardens <strong class="flavor-font">poisoned the land</strong> and <strong class="flavor-font">stole our futures</strong>. The cops silence our voices and gun us down in the streets at their bidding. They turned us into wage-slaves; mindless drones working endlessly for what little scraps they decide to give us, and turned us against our fellow man just to survive. <strong class="flavor-font">No more.</strong>`,
+      abilityMods: {
+        hp: 8,
+        gliches: 'd2',
+      },
+      equipMods: {
+        weapons: 12,
+        armor: 3
+      }
+    }
+  ];
+  pvnkArray: any[] = [];
+
   cyberTech: any[] = [];
   nano: any[]  = [];
   apps: any[]  = [];
@@ -115,6 +156,7 @@ export class AppComponent implements OnInit {
   $currentTheme = this.weirdService.currentTheme;
   toughness = 0;
   maxHp = false;
+  showClasslessPvnk = false;
 
   constructor(
     private randomRoller: RandomNumberService,
@@ -122,6 +164,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.pvnkArray = this.specialPvnks;
     this.assignPvnk();
     const theme = localStorage.getItem('theme') || 'void';
     this.weirdService.updateTheme(theme);
@@ -139,12 +182,38 @@ export class AppComponent implements OnInit {
   }
 
   getAPvnk() {
-    const rolledNum = this.randomRoller.getRandomNumber(0, this.specialPvnks.length - 1, this.prevPvnk);
-    const newPvnk = this.specialPvnks[rolledNum];
+    const rolledNum = this.pvnkArray.length - 1 > 0 ? this.randomRoller.getRandomNumber(0, this.pvnkArray.length - 1, this.prevPvnk) : 0;
+    const newPvnk = this.pvnkArray[rolledNum];
     this.prevPvnk = rolledNum;
     this.equipMods = newPvnk.equipMods;
 
     return newPvnk;
+  }
+
+  getMaxHpButtonWording() {
+    return this.maxHp ? 'maxHP === true' : 'maxHP === false'
+  }
+
+  toggleClassless() {
+    this.showClasslessPvnk = !this.showClasslessPvnk;
+    this.pvnkArray = this.showClasslessPvnk ? this.classesPvnk : this.specialPvnks;
+    this.assignPvnk(true);
+  }
+
+  getClasslessButtonWording() {
+    return this.showClasslessPvnk ? 'pvnkClass === false' : 'pvnkClass === true';
+  }
+
+  assignAbilityScoreArray(value: {
+    name: string;
+    value: number;
+    descrip: string;
+    dropLow: boolean;
+  }) {
+    value.value = value.dropLow ? this.randomRoller.dropLowest(4, 6) : this.randomRoller.rollMultipleDice(3,6);
+    if (this.chosenPvnk.abilityMods.hasOwnProperty(value.name)) {
+      value.value = value.value + this.chosenPvnk.abilityMods[value.name];
+    }
   }
 
   assignAbilityValue(value: {
@@ -152,10 +221,6 @@ export class AppComponent implements OnInit {
     value: number;
     descrip: string;
   } ) {
-  value.value = this.randomRoller.rollMultipleDice(3,6);
-  if (this.chosenPvnk.abilityMods.hasOwnProperty(value.name)) {
-    value.value = value.value + this.chosenPvnk.abilityMods[value.name];
-  }
 
   switch(true) {
     case value.value <= 4: {
@@ -196,14 +261,31 @@ export class AppComponent implements OnInit {
 };
 
   getAbilityMods(specificAbility?: string) {
+    if (this.chosenPvnk.name.includes('pvnk') && !specificAbility) {
+      // reset dropLow
+      for (let i = 0; i < this.abilities.length - 1; i++) {
+        this.abilities[i].dropLow = false;
+      }
+      let prevIndex = -1;
+
+      // randomly assign dropLow flag
+      for (let i = 0; i < 2; i++) {
+        let index = this.randomRoller.getRandomNumber(0, this.abilities.length - 1, prevIndex);
+        prevIndex = index;
+        this.abilities[index].dropLow = true;
+      }
+    }
+
     if (specificAbility) {
       for (const [key, value] of Object.entries(this.abilities)) {
         if (value.name === specificAbility) {
+          this.assignAbilityScoreArray(value);
           this.assignAbilityValue(value);
         }
       }
     } else {
       for (const [key, value] of Object.entries(this.abilities)) {
+        this.assignAbilityScoreArray(value);
         this.assignAbilityValue(value);
       }
     }

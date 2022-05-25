@@ -37,14 +37,29 @@
         font-size: 0.8em;
         .button-section {
             display: grid;
-            grid-template-rows: 1fr;
+            grid-template-rows: repeat(2, 1fr);
             grid-template-columns: repeat(2, auto);
+            grid-template-areas: 
+                "hp     classless"
+                "print  print";
             grid-gap: 0.5rem;
             place-content: center;
 
-            .print-pvnk, .max-hp-button {
+            .max-hp-button, .no-class {
                 place-self: center;
                 font-size: 1.3em;
+            }
+
+            .max-hp-button {
+                grid-area: hp;
+            }
+            .no-class {
+                grid-area: classless;
+            }
+            .print-pvnk {
+                grid-area: print;
+                font-size: 1.3em;
+                text-align: center;
             }
         }
         .copyright {

@@ -22,4 +22,13 @@ export class RandomNumberService {
         }
         return sum;
     }
+
+    dropLowest(numDice: number, max: number) {
+        const rollArray = [];
+        for (let i = 0; i < numDice; i++) {
+            rollArray.push(this.getRandomNumber(1, max));
+        }
+        rollArray.sort((a, b) => b - a).pop();
+        return rollArray.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+    }
 }

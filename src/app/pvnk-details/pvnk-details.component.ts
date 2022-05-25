@@ -48,6 +48,8 @@ export class PvnkDetailsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
+    this.originIntro = '';
+    this.originResult = '';
     this.prevOrigin = -1;
     this.getPvnkDetails();
     this.getPvnkOrigin();

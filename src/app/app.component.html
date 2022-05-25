@@ -2,11 +2,11 @@
   <span class="title no-print">
     <h1>p v n k . s p a w n e r</h1>
     <em>
-      <div>random punk generator for CY_BORG</div>
+      <div><span class="rotate-arrow">&#8626;</span>random punk generator for CY_BORG</div>
     </em>
   </span>
   <span class="clickable mass-reroll no-print" (click)="assignPvnk(true)">
-    <strong>click to spawn a new pvnk</strong>
+    <strong>pvnk.respawn()</strong>
   </span>
   <app-pvnk-identity class="identity" [maxHp]="maxHp" [toughness]="toughness" [hpMod]="chosenPvnk.abilityMods['hp']" [pvnk]="chosenPvnk" [hp]="hp"></app-pvnk-identity>
   <app-pvnk-abilities class="ability" (reRollEvent)="getAbilityMods($event)" [abilities]="abilities"></app-pvnk-abilities>
@@ -18,8 +18,9 @@
   <span class="footer">
     <span class="legal card">
       <span class="button-section">
-        <span class="clickable no-print print-pvnk" (click)="print(); setBackground()"><strong>print-a-pvnk</strong></span>
-        <span class="clickable no-print max-hp-button" (click)="maxHp = !maxHp"><strong>start w/max hp?</strong></span>
+        <span class="clickable no-print print-pvnk" (click)="print(); setBackground()"><strong>.print()</strong></span>
+        <span class="clickable no-print max-hp-button" (click)="maxHp = !maxHp"><strong>{{getMaxHpButtonWording()}}</strong></span>
+        <span class="clickable no-print no-class" (click)="toggleClassless()"><strong>{{getClasslessButtonWording()}}</strong></span>
       </span>
       <div>pvnk.spawner is an independent production by <a target="_blank" href="https://twitter.com/codeLiches" class="clickable">@codeLiches</a> and is not affiliated with Stockholm Kartell. It is published under the CY_BORG Third Party License.</div>
       <div class="copyright">CY_BORG IS ©2022 STOCKHOLM KARTELL.</div>

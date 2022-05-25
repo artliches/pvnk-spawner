@@ -1,6 +1,8 @@
 <span class="card identity">
     <span class="card-title">
         <strong class="clickable" (click)="shuffleTheme()">{{pvnk.name | uppercase}}</strong>
+        <em>	
+            <span class="rotate-arrow">&#8626;</span>shuffleTheme()</em>
     </span>
 
     <span class="card-body">
@@ -12,7 +14,7 @@
             </span>
             <span>
                 <strong>GLITCHES </strong>
-                <strong (click)="getGlitches()" class="clickable">{{getGlitches()}}</strong>({{pvnk.abilityMods.gliches | uppercase}})
+                <strong (click)="getGlitches()" class="clickable">{{glitches}}</strong>({{pvnk.abilityMods.gliches | uppercase}})
             </span>
         </span>
     </span>

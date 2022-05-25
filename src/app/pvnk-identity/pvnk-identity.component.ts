@@ -23,8 +23,9 @@ export class PvnkIdentityComponent implements OnInit, OnChanges {
     malfunction: 'rgb(51, 32, 42)',
     blues: 'blue',
   }
-
+  glitches = 0;
   lastGlitch = -1;
+  prevHp = -1;
 
   constructor(
     private weirdService: AppCyberNanoService,
@@ -38,11 +39,14 @@ export class PvnkIdentityComponent implements OnInit, OnChanges {
     if (this.maxHp) {
       this.hp = this.toughness + this.hpMod;
     }
+    this.getGlitches();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.maxHp) {
       this.hp = this.toughness + this.hpMod;
+    } else {
+      this.hp = this.toughness + this.randomRoller.getRandomNumber(1, this.hpMod);
     }
   }
 
@@ -50,7 +54,7 @@ export class PvnkIdentityComponent implements OnInit, OnChanges {
     const glitchMod = this.pvnk.abilityMods.gliches[1];
     const rolledGlitch = this.randomRoller.getRandomNumber(1, glitchMod, this.lastGlitch);
     this.lastGlitch = rolledGlitch;
-    return rolledGlitch;
+    this.glitches = rolledGlitch;
   }
 
   shuffleTheme() {
@@ -62,7 +66,13 @@ export class PvnkIdentityComponent implements OnInit, OnChanges {
   }
 
   rerollHp() {
-    this.hp = this.toughness + this.randomRoller.getRandomNumber(1, this.hpMod);
+    if (this.maxHp) {
+      this.hp = this.toughness + this.hpMod;
+    } else {
+      const rolledHP = this.randomRoller.getRandomNumber(1, this.hpMod, this.prevHp);
+      this.prevHp = rolledHP;
+      this.hp = this.toughness + rolledHP;
+    }
     this.hp = this.hp <= 0 ? 1 : this.hp;
   }
 }

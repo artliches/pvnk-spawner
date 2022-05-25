@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { AppCyberNanoService } from '../services/app-cyber-nano.service';
 import { RandomNumberService } from '../services/random-number.service';
 import { ARMOR, CYBERSLASHER_EXTRA, GEARHEAD_EXTRA, KILLER_EXTRA, NANOMANCER_EXTRA, START1, START2, START3, WEAPONS } from '../services/random-tables.constant';
@@ -8,11 +8,12 @@ import { ARMOR, CYBERSLASHER_EXTRA, GEARHEAD_EXTRA, KILLER_EXTRA, NANOMANCER_EXT
   templateUrl: './pvnk-equipment.component.html',
   styleUrls: ['./pvnk-equipment.component.scss']
 })
-export class PvnkEquipmentComponent implements OnInit, OnChanges {
+export class PvnkEquipmentComponent implements OnChanges {
     @Input() reroll = false;
     @Input() equipMods: any;
     @Input() pvnkClass: string = '';
     @Output() onCyberNanoApp: EventEmitter<any> = new EventEmitter<any>();
+
     equipment: any[] = [];
     equipArray = {
         start1: START1,
@@ -51,10 +52,7 @@ export class PvnkEquipmentComponent implements OnInit, OnChanges {
       private weirdService: AppCyberNanoService,
   ) { }
 
-  ngOnInit(): void {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.weirdService.currentNano.subscribe(result => this.nano = result);
     this.weirdService.currentApps.subscribe(result => this.app = result);
     this.weirdService.currentCybertech.subscribe(result => this.cyberTech = result);

@@ -38,6 +38,10 @@ body {
     font-size: 1.2em;
 }
 
+.rotate-arrow {
+    writing-mode: vertical-lr;
+}
+
 .card {
     display: grid;
     grid-template-columns: 1fr;
