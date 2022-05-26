@@ -9,7 +9,7 @@ import { RandomNumberService } from '../services/random-number.service';
 })
 export class PvnkIdentityComponent implements OnInit, OnChanges {
   @Input() pvnk: any;
-  @Input() hp = 0;
+  @Input() hp = 1;
   @Input() toughness = 0;
   @Input() hpMod: any;
   @Input() maxHp: boolean = false;
@@ -47,6 +47,7 @@ export class PvnkIdentityComponent implements OnInit, OnChanges {
       this.hp = this.toughness + this.hpMod;
     } else {
       this.hp = this.toughness + this.randomRoller.getRandomNumber(1, this.hpMod);
+      this.hp = this.hp <= 0 ? 1 : this.hp;
     }
   }
 
