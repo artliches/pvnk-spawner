@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1653586768089,
+  "timestamp": 1653682002945,
   "index": "/pvnk-spawner/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "/pvnk-spawner/favicon.ico",
         "/pvnk-spawner/index.html",
-        "/pvnk-spawner/main.29e8eaa1469f287d.js",
+        "/pvnk-spawner/main.6b0d3788bc179191.js",
         "/pvnk-spawner/manifest.webmanifest",
         "/pvnk-spawner/polyfills.e6bb52ff8dbbc2fc.js",
         "/pvnk-spawner/runtime.7ed6e49bf7c6d355.js",
-        "/pvnk-spawner/styles.a3f105c49338bba9.css"
+        "/pvnk-spawner/styles.5a3568b0d63e36f1.css"
       ],
       "patterns": []
     },
@@ -32,6 +32,7 @@
         "/pvnk-spawner/Adder.e9c45efb8bd3d0b2.otf",
         "/pvnk-spawner/Another_Danger.3533b995e7516c93.ttf",
         "/pvnk-spawner/Cybrpnuk2.a0f84f63891ee028.ttf",
+        "/pvnk-spawner/Dicier-Flat-Heavy.c6483d21f47e2602.woff2",
         "/pvnk-spawner/RobotoMono-VariableFont_wght.c2fd1c69d0c4ce13.ttf",
         "/pvnk-spawner/assets/fonts/Adder.otf",
         "/pvnk-spawner/assets/fonts/Adder_Extended.otf",
@@ -39,6 +40,7 @@
         "/pvnk-spawner/assets/fonts/Another_Danger.ttf",
         "/pvnk-spawner/assets/fonts/Another_Danger_Slanted.ttf",
         "/pvnk-spawner/assets/fonts/Cybrpnuk2.ttf",
+        "/pvnk-spawner/assets/fonts/Dicier-Flat-Heavy.woff2",
         "/pvnk-spawner/assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf",
         "/pvnk-spawner/assets/fonts/RobotoMono-VariableFont_wght.ttf",
         "/pvnk-spawner/assets/icons/android-chrome-192x192.png",
@@ -55,6 +57,7 @@
     "/pvnk-spawner/Adder.e9c45efb8bd3d0b2.otf": "611bb3e58129dc95bbf91f1b1de84cd1195d781b",
     "/pvnk-spawner/Another_Danger.3533b995e7516c93.ttf": "542acf0258a12a83f4eec5f2acaa872a6c95b766",
     "/pvnk-spawner/Cybrpnuk2.a0f84f63891ee028.ttf": "612ac672d1a9dd0695f298c8ed069bed855424a7",
+    "/pvnk-spawner/Dicier-Flat-Heavy.c6483d21f47e2602.woff2": "bf061fd4c8769734883194a037f2b8cda750e5a1",
     "/pvnk-spawner/RobotoMono-VariableFont_wght.c2fd1c69d0c4ce13.ttf": "49b4d9fac9359dbe93549548dcf74141e491ad6f",
     "/pvnk-spawner/assets/fonts/Adder.otf": "611bb3e58129dc95bbf91f1b1de84cd1195d781b",
     "/pvnk-spawner/assets/fonts/Adder_Extended.otf": "e098563b19a5b7a534940ab58489e1fbcf3e5013",
@@ -62,6 +65,7 @@
     "/pvnk-spawner/assets/fonts/Another_Danger.ttf": "542acf0258a12a83f4eec5f2acaa872a6c95b766",
     "/pvnk-spawner/assets/fonts/Another_Danger_Slanted.ttf": "8f9470299c559ad6ac71b39d48e40c022d6263fc",
     "/pvnk-spawner/assets/fonts/Cybrpnuk2.ttf": "612ac672d1a9dd0695f298c8ed069bed855424a7",
+    "/pvnk-spawner/assets/fonts/Dicier-Flat-Heavy.woff2": "bf061fd4c8769734883194a037f2b8cda750e5a1",
     "/pvnk-spawner/assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf": "1c6bb76e55fe28a2e8c9a8436dea1414bfc6a75b",
     "/pvnk-spawner/assets/fonts/RobotoMono-VariableFont_wght.ttf": "49b4d9fac9359dbe93549548dcf74141e491ad6f",
     "/pvnk-spawner/assets/icons/android-chrome-192x192.png": "a848f4e034ae77122a0201fc8e21f749d46304f4",
@@ -70,12 +74,12 @@
     "/pvnk-spawner/assets/icons/favicon-16x16.png": "404c9a851c6e9d3ae7c5b8654c7d33f7a2bf5ecf",
     "/pvnk-spawner/assets/icons/favicon-32x32.png": "924aebbfb03f28e55fdb4de877b34abae5960dbd",
     "/pvnk-spawner/favicon.ico": "47c27e32fa74c16f2aaaa63065566f083ff77a22",
-    "/pvnk-spawner/index.html": "780934e6af1ffb24522abb29848326ff11211329",
-    "/pvnk-spawner/main.29e8eaa1469f287d.js": "05eec652bcc0ee1b72d2b7331dd7ffb9414fade4",
+    "/pvnk-spawner/index.html": "fe55516296a2489b60d6f72299cda89d672809a9",
+    "/pvnk-spawner/main.6b0d3788bc179191.js": "5d82827aa6507e92cb4ca2fce10b82904dbccbfb",
     "/pvnk-spawner/manifest.webmanifest": "b993dc96a28d4cba6d7e07bef820c67a34404a89",
     "/pvnk-spawner/polyfills.e6bb52ff8dbbc2fc.js": "f296049169f01dd59b99767e143ed53165226a89",
     "/pvnk-spawner/runtime.7ed6e49bf7c6d355.js": "58a2ec3e96f94189895f0ed336b73616b811dc9a",
-    "/pvnk-spawner/styles.a3f105c49338bba9.css": "935bef6efe3110d721b1a4be906f010dbc34bb60"
+    "/pvnk-spawner/styles.5a3568b0d63e36f1.css": "da9cc68963481b2a5da844766beee043c31a3216"
   },
   "navigationUrls": [
     {
