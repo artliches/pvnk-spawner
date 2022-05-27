@@ -8,9 +8,15 @@
     <span class="card-body">
         <span [innerHtml]="pvnk.flavor | safeHtml"></span>
         <span class="hp-glitches">
-            <span>
-                <strong>HP </strong>
-                <strong class="clickable" (click)="rerollHp()">{{hp}}</strong>
+            <span class="hp-section">
+                <strong class="hp-title">HP </strong>
+                <strong class="clickable hp" (click)="rerollHp()">{{hp}}</strong>
+                <em *ngIf="showDie" class="die">
+                    <span class="dicer-font">
+                        {{rolledHp}}_ON_D{{hpMod}}
+                    </span>
+                    <span *ngIf="toughness >= 0">+</span>{{toughness}}<span>&#8594;</span>
+                </em>
             </span>
             <span>
                 <strong>GLITCHES </strong>

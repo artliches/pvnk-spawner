@@ -7,6 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class PvnkAbilitiesComponent implements OnInit {
   @Input() abilities: any;
+  @Input() pvnk: any;
+  @Input() showDie: boolean = false;
   @Output() reRollEvent: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
@@ -17,5 +19,4 @@ export class PvnkAbilitiesComponent implements OnInit {
   reRollAbility(abilityName: string) {
     this.reRollEvent.emit(abilityName);
   }
-
 }

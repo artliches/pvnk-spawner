@@ -6,6 +6,12 @@
         <span *ngFor="let ability of abilities" class="ability-names">
             <strong>
                 <span class="clickable" (click)="reRollAbility(ability.name)">{{ability.name | titlecase}}</span>
+                <span *ngIf="showDie">
+                    <span class="dicer-font" *ngFor="let die of ability.dieArray">
+                        {{die}}
+                    </span>
+                    <span *ngIf="pvnk.abilityMods[ability.name] && pvnk.abilityMods[ability.name] > 0">+</span>{{pvnk.abilityMods[ability.name]}}
+                </span>
             </strong>
             <em>
                 {{ability.descrip}}

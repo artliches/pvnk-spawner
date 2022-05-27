@@ -21,6 +21,25 @@
     grid-template-columns: repeat(2, auto);
     grid-gap: 1rem;
     place-self: center;
+
+    .hp-section {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: auto repeat(2, min-content);
+        grid-template-areas:
+            "die    title   hp";
+        .hp-title {
+            grid-area: title;
+        }
+        .hp {
+            margin-left: 0.5rem;
+            grid-area: hp;
+        }
+        .die {
+            grid-area: die;
+            font-size: 0.8em;
+        }
+    }
 }
 
 @media only screen and (min-width: 768px) {

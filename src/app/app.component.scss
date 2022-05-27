@@ -16,7 +16,7 @@
             margin-bottom: 0rem;
         }
         em {
-            font-size: 0.5em;
+            font-size: 0.7em;
             place-self: center;
         }
     }
@@ -38,15 +38,10 @@
         font-size: 0.8em;
         .button-section {
             display: grid;
-            grid-template-rows: repeat(2, 1fr);
-            grid-template-columns: repeat(2, auto);
-            grid-template-areas: 
-                "hp     classless"
-                "print  print";
             grid-gap: 0.5rem;
             place-content: center;
 
-            .max-hp-button, .no-class {
+            .max-hp-button, .no-class, .show-die {
                 place-self: center;
                 font-size: 1.3em;
             }
@@ -65,6 +60,42 @@
         }
         .copyright {
             place-self: center;
+        }
+    }
+}
+
+@media only screen and (min-width: 320px) {
+    .legal {
+        .button-section {
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(2, auto);
+            grid-template-areas: 
+                "hp     classless"
+                "print  showDie";
+        }
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .legal {
+        .button-section {
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(3, auto);
+            grid-template-areas: 
+                "hp     showDie     classless"
+                "print  print       print";
+        }
+    }
+}
+
+@media only screen and (min-width: 425px) {
+    .legal {
+        .button-section {
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(3, auto);
+            grid-template-areas: 
+                "hp     showDie     classless"
+                "print  print       print";
         }
     }
 }
@@ -92,6 +123,16 @@
                 grid-area: #{$area};
             }
         }
+
+        .legal {
+            .button-section {
+                grid-template-rows: repeat(2, 1fr);
+                grid-template-columns: repeat(3, auto);
+                grid-template-areas: 
+                    "hp     showDie     classless"
+                    "print  print       print";
+            }
+        }
     }
 }
 
@@ -99,6 +140,16 @@
     .pvnk-grid {
         max-width: 53%;
         margin: auto;
+
+        .legal {
+            .button-section {
+                grid-template-rows: repeat(2, 1fr);
+                grid-template-columns: repeat(3, auto);
+                grid-template-areas: 
+                    "hp     showDie     classless"
+                    "print  print       print";
+            }
+        }
     }
 }
 

@@ -14,30 +14,35 @@ export class AppComponent implements OnInit {
       value: 0,
       descrip: 'Sneak, dodge, drive, autofire',
       dropLow: false,
+      dieArray: []
     },
     {
       name: 'knowledge',
       value: 0,
       descrip: 'Science, use tech or App',
       dropLow: false,
+      dieArray: []
     },
     {
       name: 'presence',
       value: 0,
       descrip: 'Snipe/shoot, use Nano, charm',
       dropLow: false,
+      dieArray: []
     },
     {
       name: 'strength',
       value: 0,
       descrip: 'Strike, grapple, lift, throw',
       dropLow: false,
+      dieArray: []
     },
     {
       name: 'toughness',
       value: 0,
       descrip: 'Survive falling, poison, and elements',
       dropLow: false,
+      dieArray: []
     },
   ];
   chosenPvnk: any;
@@ -152,11 +157,13 @@ export class AppComponent implements OnInit {
   apps: any[]  = [];
   equipMods = {};
   reroll = false;
+  rolledHp = 0;
 
   $currentTheme = this.weirdService.currentTheme;
   toughness = 0;
   maxHp = false;
   showClasslessPvnk = false;
+  showDie = false;
 
   constructor(
     private randomRoller: RandomNumberService,
@@ -190,10 +197,6 @@ export class AppComponent implements OnInit {
     return newPvnk;
   }
 
-  getMaxHpButtonWording() {
-    return this.maxHp ? 'maxHP === true' : 'maxHP === false'
-  }
-
   toggleClassless() {
     this.showClasslessPvnk = !this.showClasslessPvnk;
     this.pvnkArray = this.showClasslessPvnk ? this.classesPvnk : this.specialPvnks;
@@ -201,7 +204,15 @@ export class AppComponent implements OnInit {
   }
 
   getClasslessButtonWording() {
-    return this.showClasslessPvnk ? 'pvnkClass === false' : 'pvnkClass === true';
+    return this.showClasslessPvnk ? 'pvnkClass = false' : 'pvnkClass = true';
+  }
+
+  getMaxHpButtonWording() {
+    return this.maxHp ? 'maxHP = true' : 'maxHP = false'
+  }
+
+  getShowDieWording() {
+    return this.showDie ? 'showDie' : 'hideDie';
   }
 
   assignAbilityScoreArray(value: {
@@ -209,8 +220,18 @@ export class AppComponent implements OnInit {
     value: number;
     descrip: string;
     dropLow: boolean;
+    dieArray: any[];
   }) {
-    value.value = value.dropLow ? this.randomRoller.dropLowest(4, 6) : this.randomRoller.rollMultipleDice(3,6);
+    let numArray = [];
+
+    value.dieArray = value.dropLow ? this.randomRoller.getDieArray(4, 6) : this.randomRoller.getDieArray(3,6);
+    numArray = value.dieArray;
+    if (value.dropLow) {
+      numArray.sort((a, b) => b -a).pop;
+    }
+    value.value = numArray.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+
+    // value.value = value.dropLow ? this.randomRoller.dropLowest(4, 6) : this.randomRoller.rollMultipleDice(3,6);
     if (this.chosenPvnk.abilityMods.hasOwnProperty(value.name)) {
       value.value = value.value + this.chosenPvnk.abilityMods[value.name];
     }
@@ -255,7 +276,8 @@ export class AppComponent implements OnInit {
 
   if (value.name === 'toughness') {
     this.toughness = value.value;
-    this.hp = value.value + this.randomRoller.getRandomNumber(1, this.chosenPvnk.abilityMods.hp);
+    this.rolledHp = this.randomRoller.getRandomNumber(1, this.chosenPvnk.abilityMods.hp);
+    this.hp = this.toughness + this.rolledHp;
     this.hp = this.hp <= 0 ? 1 : this.hp;
   }
 };

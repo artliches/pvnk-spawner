@@ -9,10 +9,12 @@ import { RandomNumberService } from '../services/random-number.service';
 })
 export class PvnkIdentityComponent implements OnInit, OnChanges {
   @Input() pvnk: any;
+  @Input() rolledHp = 0;
   @Input() hp = 1;
   @Input() toughness = 0;
   @Input() hpMod: any;
   @Input() maxHp: boolean = false;
+  @Input() showDie: boolean = false;
 
   themeBackgrounds: any = {
     void: 'white',
@@ -44,10 +46,8 @@ export class PvnkIdentityComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.maxHp) {
+      this.rolledHp = this.hpMod;
       this.hp = this.toughness + this.hpMod;
-    } else {
-      this.hp = this.toughness + this.randomRoller.getRandomNumber(1, this.hpMod);
-      this.hp = this.hp <= 0 ? 1 : this.hp;
     }
   }
 
@@ -68,11 +68,12 @@ export class PvnkIdentityComponent implements OnInit, OnChanges {
 
   rerollHp() {
     if (this.maxHp) {
+      this.rolledHp = this.hpMod;
       this.hp = this.toughness + this.hpMod;
     } else {
-      const rolledHP = this.randomRoller.getRandomNumber(1, this.hpMod, this.prevHp);
-      this.prevHp = rolledHP;
-      this.hp = this.toughness + rolledHP;
+      this.rolledHp = this.randomRoller.getRandomNumber(1, this.hpMod, this.prevHp);
+      this.prevHp = this.rolledHp;
+      this.hp = this.toughness + this.rolledHp;
     }
     this.hp = this.hp <= 0 ? 1 : this.hp;
   }

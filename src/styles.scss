@@ -24,6 +24,12 @@
     font-weight: 100 1000;
 }
 
+@font-face {
+    font-family: "Dicer";
+    src: local("Dicer"), url(./assets/fonts/Dicier-Flat-Heavy.woff2) format('opentype');
+    font-weight: 100 1000;
+}
+
 body {
     font-family: "Roboto Mono", sans-serif;
 }
@@ -36,6 +42,11 @@ body {
 .flavor-font {
     font-family: "Adder", sans-serif;
     font-size: 1.2em;
+}
+
+.dicer-font {
+    font-family: "Dicer";
+    font-feature-settings: “liga” 1, “kern” 1, “calt” 1;
 }
 
 .rotate-arrow {
