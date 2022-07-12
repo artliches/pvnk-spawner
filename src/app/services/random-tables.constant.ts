@@ -279,7 +279,7 @@ export const DEBT = [
     'the owner of a seedy club or dive bar.',
     'a fixer with cops on their payroll.',
     'someone you trust, hospitalized with increasing medical bills.',
-    'A semi-sentient AI cluster slowly building up its influence.',
+    'a semi-sentient AI cluster slowly building up its influence.',
     'a small but extremely violent SecCorp.',
 ];
 

@@ -212,7 +212,7 @@ export class AppComponent implements OnInit {
   }
 
   getShowDieWording() {
-    return this.showDie ? 'showDie' : 'hideDie';
+    return this.showDie ? 'hideDie' : 'showDie';
   }
 
   assignAbilityScoreArray(value: {
@@ -238,10 +238,10 @@ export class AppComponent implements OnInit {
   }
 
   assignAbilityValue(value: {
-    name: string;
-    value: number;
-    descrip: string;
-  } ) {
+      name: string;
+      value: number;
+      descrip: string;
+    }, rerolledToughness?: boolean ) {
 
   switch(true) {
     case value.value <= 4: {
@@ -276,7 +276,7 @@ export class AppComponent implements OnInit {
 
   if (value.name === 'toughness') {
     this.toughness = value.value;
-    this.rolledHp = this.randomRoller.getRandomNumber(1, this.chosenPvnk.abilityMods.hp);
+    this.rolledHp = rerolledToughness ? this.rolledHp : this.randomRoller.getRandomNumber(1, this.chosenPvnk.abilityMods.hp);
     this.hp = this.toughness + this.rolledHp;
     this.hp = this.hp <= 0 ? 1 : this.hp;
   }
@@ -302,7 +302,11 @@ export class AppComponent implements OnInit {
       for (const [key, value] of Object.entries(this.abilities)) {
         if (value.name === specificAbility) {
           this.assignAbilityScoreArray(value);
-          this.assignAbilityValue(value);
+          if (specificAbility === 'toughness') {
+            this.assignAbilityValue(value, true);
+          } else {
+            this.assignAbilityValue(value);
+          }
         }
       }
     } else {
