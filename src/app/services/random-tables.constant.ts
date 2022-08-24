@@ -449,7 +449,7 @@ export const GEARHEAD_ORIGINS = [
     'disappeared in G0. Looking for an advanced lab rumored to have survived the Incident.',
     'were proclaimed dead. But you know their soul lives on inside something else.',
     'were dragged off to a Corp blacksite by an anonymous killteam.',
-    'feft you to join up with a roadrunner outfit. They scavenge scrap on the rivers up north.',
+    'left you to join up with a roadrunner outfit. They scavenge scrap on the rivers up north.',
     'bugged out, pursued by rival droners and bots. Waiting out the heat.',
     'got laid up, comatose in a Central Cy hospital. Allegedly a workshop accident. They’re fine as long as there’s ¤ on their account',
 ];
