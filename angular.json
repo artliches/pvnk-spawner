@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pvnk-spawner:build:production"
+              "buildTarget": "pvnk-spawner:build:production"
             },
             "development": {
-              "browserTarget": "pvnk-spawner:build:development"
+              "buildTarget": "pvnk-spawner:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pvnk-spawner:build"
+            "buildTarget": "pvnk-spawner:build"
           }
         },
         "test": {
