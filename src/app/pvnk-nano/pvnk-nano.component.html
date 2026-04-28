@@ -1,21 +1,22 @@
 <span class="card nano">
-    <span class="card-title">
-        <strong class="clickable" (click)="rerollNano()">NANO</strong>
-        <em>Test DR12 Presence to use Nano. Failure→take d2 dmg. +Fumble triggers Infection linked to that power (pg. 76). Each Nano use adds +1 to Fumble when using Nano until the next day.</em>
-    </span>
-    <span class="card-body">
-        <span class="nano-display" *ngFor="let nanoDisplay of nano; let i = index">
-            <span>
-                <strong>POWER</strong>
-                <span (click)="rerollPower(i)" [innerHtml]="nanoDisplay.power | safeHtml">
-                </span>
-            </span>
-
-            <span>
-                <strong>INFESTATION</strong>
-                <span (click)="rerollInfestation(i)" [innerHtml]="nanoDisplay.infestation | safeHtml">
-                </span>
-            </span>
+  <span class="card-title">
+    <strong class="clickable" (click)="rerollNano()">NANO</strong>
+    <em>Test DR12 Presence to use Nano. Failure→take d2 dmg. +Fumble triggers Infection linked to that power (pg. 76). Each Nano use adds +1 to Fumble when using Nano until the next day.</em>
+  </span>
+  <span class="card-body">
+    @for (nanoDisplay of nano; track nanoDisplay; let i = $index) {
+      <span class="nano-display">
+        <span>
+          <strong>POWER</strong>
+          <span (click)="rerollPower(i)" [innerHtml]="nanoDisplay.power | safeHtml">
+          </span>
         </span>
-    </span>
+        <span>
+          <strong>INFESTATION</strong>
+          <span (click)="rerollInfestation(i)" [innerHtml]="nanoDisplay.infestation | safeHtml">
+          </span>
+        </span>
+      </span>
+    }
+  </span>
 </span>

@@ -1,14 +1,16 @@
 <span class="card cybertech">
-    <span class="card-title">
-        <strong>
-            <span class="clickable" (click)="rerollCybertech()">CYBERTECH</span>
-        </strong>
-    </span>
-    <span class="card-body">
-        <ul>
-            <li *ngFor="let tech of cyberTech; let i = index">
-                <span (click)="rerollCybertech(i)" [innerHtml]="tech | safeHtml"></span>
-            </li>
-        </ul>
-    </span>
+  <span class="card-title">
+    <strong>
+      <span class="clickable" (click)="rerollCybertech()">CYBERTECH</span>
+    </strong>
+  </span>
+  <span class="card-body">
+    <ul>
+      @for (tech of cyberTech; track tech; let i = $index) {
+        <li>
+          <span (click)="rerollCybertech(i)" [innerHtml]="tech | safeHtml"></span>
+        </li>
+      }
+    </ul>
+  </span>
 </span>

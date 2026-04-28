@@ -1,24 +1,28 @@
 <span class="card details">
-    <span class="card-title">
-        <span class="clickable" (click)="getName()">THEY CALL YOU <strong>{{pvnkName | uppercase}}</strong></span>
+  <span class="card-title">
+    <span class="clickable" (click)="getName()">THEY CALL YOU <strong>{{pvnkName | uppercase}}</strong></span>
+  </span>
+  <span class="card-body">
+    @if (originIntro && originResult) {
+      <span>
+        {{originIntro}} <span class="clickable" (click)="getPvnkOrigin(true)">{{originResult}}</span>
+        @if (originExtra) {
+          <span (click)="getPvnkOrigin(false, true)" [innerHtml]="originExtra | safeHtml"></span>
+        }
+      </span>
+    }
+    <span>
+      Your style can be described as <span class="clickable" (click)="getPvnkDetails('style')">"{{pvnkDetails['style']}}"</span>, while your <span class="clickable" (click)="getPvnkDetails('feature')">{{pvnkDetails['feature'] | lowercase}}</span> is/are your most prominent feature.
+      More than anything, you want <span class="clickable" (click)="getPvnkDetails('wants')">{{pvnkDetails['wants'] | lowercase}}</span>.
     </span>
-    <span class="card-body">
-        <span *ngIf="originIntro && originResult">
-            {{originIntro}} <span class="clickable" (click)="getPvnkOrigin(true)">{{originResult}}</span>
-            <span (click)="getPvnkOrigin(false, true)" *ngIf="originExtra" [innerHtml]="originExtra | safeHtml"></span>
-        </span>
-        <span>
-            Your style can be described as <span class="clickable" (click)="getPvnkDetails('style')">"{{pvnkDetails['style']}}"</span>, while your <span class="clickable" (click)="getPvnkDetails('feature')">{{pvnkDetails['feature'] | lowercase}}</span> is/are your most prominent feature.
-            More than anything, you want <span class="clickable" (click)="getPvnkDetails('wants')">{{pvnkDetails['wants'] | lowercase}}</span>.
-        </span>
 
-        <span>
-            The one quirk that you can't seem to shake is your tendancy to <span class='clickable' (click)="getPvnkDetails('quirk')">{{pvnkDetails['quirk']}}.</span>
-            You are currently obsessed with <span class="clickable" (click)="getPvnkDetails('obsession')">{{pvnkDetails['obsession']}}.</span>
-        </span>
-
-        <span>
-            You have a <strong>DEBT</strong> of <span class="clickable" (click)="getDebt()">{{debtAmount}}¤</span> to <span class="clickable" (click)="getPvnkDetails('debt')">{{pvnkDetails['debt']}}</span> They want it back <strong>VERY BADLY</strong>.
-        </span>
+    <span>
+      The one quirk that you can't seem to shake is your tendancy to <span class='clickable' (click)="getPvnkDetails('quirk')">{{pvnkDetails['quirk']}}.</span>
+      You are currently obsessed with <span class="clickable" (click)="getPvnkDetails('obsession')">{{pvnkDetails['obsession']}}.</span>
     </span>
+
+    <span>
+      You have a <strong>DEBT</strong> of <span class="clickable" (click)="getDebt()">{{debtAmount}}¤</span> to <span class="clickable" (click)="getPvnkDetails('debt')">{{pvnkDetails['debt']}}</span> They want it back <strong>VERY BADLY</strong>.
+    </span>
+  </span>
 </span>

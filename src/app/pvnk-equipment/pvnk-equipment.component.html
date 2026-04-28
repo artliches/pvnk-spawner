@@ -1,19 +1,21 @@
 <span class="card equipment">
-    <span class="card-title">
-        <strong>
-            <span class="clickable" (click)="rollEquipment()">
-                EQUIPMENT
-            </span>
-        </strong>
-        <em>
-            If greater than Strength+8 items, DR+2 on Agility/Strength tests. You can carry no more than twice Strength+8 items.</em>
-    </span>
+  <span class="card-title">
+    <strong>
+      <span class="clickable" (click)="rollEquipment()">
+        EQUIPMENT
+      </span>
+    </strong>
+    <em>
+    If greater than Strength+8 items, DR+2 on Agility/Strength tests. You can carry no more than twice Strength+8 items.</em>
+  </span>
 
-    <span class="card-body">
-        <ul>
-            <li *ngFor="let equip of equipment">
-                <span (click)="reRollEquip(equip.key)" [innerHtml]="equip.value | safeHtml"></span>
-            </li>
-        </ul>
-    </span>
+  <span class="card-body">
+    <ul>
+      @for (equip of equipment; track equip) {
+        <li>
+          <span (click)="reRollEquip(equip.key)" [innerHtml]="equip.value | safeHtml"></span>
+        </li>
+      }
+    </ul>
+  </span>
 </span>

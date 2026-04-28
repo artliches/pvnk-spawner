@@ -1,27 +1,31 @@
 <span class="card identity">
-    <span class="card-title">
-        <strong class="clickable" (click)="shuffleTheme()">{{pvnk.name | uppercase}}</strong>
-        <em>	
-            <span class="rotate-arrow">&#8626;</span>shuffleTheme()</em>
+  <span class="card-title">
+    <strong class="clickable" (click)="shuffleTheme()">{{pvnk.name | uppercase}}</strong>
+    <em>
+      <span class="rotate-arrow">&#8626;</span>shuffleTheme()</em>
     </span>
 
     <span class="card-body">
-        <span [innerHtml]="pvnk.flavor | safeHtml"></span>
-        <span class="hp-glitches">
-            <span class="hp-section">
-                <strong class="hp-title">HP </strong>
-                <strong class="clickable hp" (click)="rerollHp()">{{hp}}</strong>
-                <em *ngIf="showDie" class="die">
-                    <span class="dicer-font">
-                        {{rolledHp}}_ON_D{{hpMod}}
-                    </span>
-                    <span *ngIf="toughness >= 0">+</span>{{toughness}}<span>&#8594;</span>
-                </em>
-            </span>
-            <span>
-                <strong>GLITCHES </strong>
-                <strong (click)="getGlitches()" class="clickable">{{glitches}}</strong>({{pvnk.abilityMods.gliches | uppercase}})
-            </span>
+      <span [innerHtml]="pvnk.flavor | safeHtml"></span>
+      <span class="hp-glitches">
+        <span class="hp-section">
+          <strong class="hp-title">HP </strong>
+          <strong class="clickable hp" (click)="rerollHp()">{{hp}}</strong>
+          @if (showDie) {
+            <em class="die">
+              <span class="dicer-font">
+                {{rolledHp}}_ON_D{{hpMod}}
+              </span>
+              @if (toughness >= 0) {
+                <span>+</span>
+                }{{toughness}}<span>&#8594;</span>
+              </em>
+            }
+          </span>
+          <span>
+            <strong>GLITCHES </strong>
+            <strong (click)="getGlitches()" class="clickable">{{glitches}}</strong>({{pvnk.abilityMods.gliches | uppercase}})
+          </span>
         </span>
+      </span>
     </span>
-</span>

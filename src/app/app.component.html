@@ -12,9 +12,15 @@
   <app-pvnk-abilities class="ability" [showDie]="showDie"  (reRollEvent)="getAbilityMods($event)" [pvnk]="chosenPvnk" [abilities]="abilities"></app-pvnk-abilities>
   <app-pvnk-details class="details" [pvnkClass]="chosenPvnk.name" [reroll]="reroll"></app-pvnk-details>
   <app-pvnk-equipment class="equipment" [pvnkClass]="chosenPvnk.name" [reroll]="reroll" [equipMods]="equipMods" (onCyberNanoApp)="getCyberNanoApp($event)"></app-pvnk-equipment>
-  <app-pvnk-cybertech class="cybertech" *ngIf="cyberTech.length" [isSlasher]="chosenPvnk.name === 'renagade cyberslasher'" [cyberTech]="cyberTech"></app-pvnk-cybertech>
-  <app-pvnk-nano class="nano" *ngIf="nano.length" [nano]="nano"></app-pvnk-nano>
-  <app-pvnk-apps class="apps" [isHacker]="chosenPvnk.name === 'burned hacker'" *ngIf="apps.length" [apps]="apps"></app-pvnk-apps>
+  @if (cyberTech.length) {
+    <app-pvnk-cybertech class="cybertech" [isSlasher]="chosenPvnk.name === 'renagade cyberslasher'" [cyberTech]="cyberTech"></app-pvnk-cybertech>
+  }
+  @if (nano.length) {
+    <app-pvnk-nano class="nano" [nano]="nano"></app-pvnk-nano>
+  }
+  @if (apps.length) {
+    <app-pvnk-apps class="apps" [isHacker]="chosenPvnk.name === 'burned hacker'" [apps]="apps"></app-pvnk-apps>
+  }
   <span class="footer">
     <span class="legal card">
       <span class="button-section">

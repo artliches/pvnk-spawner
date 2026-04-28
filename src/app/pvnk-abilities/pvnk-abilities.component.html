@@ -1,22 +1,30 @@
 <span class="card ability">
-    <span class="card-title">
-        <span (click)="reRollAbility('')" class="clickable"><strong>ABILITIES</strong></span>
-    </span>
-    <div class="card-body">
-        <span *ngFor="let ability of abilities" class="ability-names">
-            <strong>
-                <span class="clickable" (click)="reRollAbility(ability.name)">{{ability.name | titlecase}}</span>
-                <span *ngIf="showDie">
-                    <span class="dicer-font" *ngFor="let die of ability.dieArray">
-                        {{die}}
-                    </span>
-                    <span *ngIf="pvnk.abilityMods[ability.name] && pvnk.abilityMods[ability.name] > 0">+</span>{{pvnk.abilityMods[ability.name]}}
+  <span class="card-title">
+    <span (click)="reRollAbility('')" class="clickable"><strong>ABILITIES</strong></span>
+  </span>
+  <div class="card-body">
+    @for (ability of abilities; track ability) {
+      <span class="ability-names">
+        <strong>
+          <span class="clickable" (click)="reRollAbility(ability.name)">{{ability.name | titlecase}}</span>
+          @if (showDie) {
+            <span>
+              @for (die of ability.dieArray; track die) {
+                <span class="dicer-font">
+                  {{die}}
                 </span>
-            </strong>
-            <em>
-                {{ability.descrip}}
-            </em>
-            <span class="score">{{ability.value}}</span>
+              }
+              @if (pvnk.abilityMods[ability.name] && pvnk.abilityMods[ability.name] > 0) {
+                <span>+</span>
+                }{{pvnk.abilityMods[ability.name]}}
+              </span>
+            }
+          </strong>
+          <em>
+            {{ability.descrip}}
+          </em>
+          <span class="score">{{ability.value}}</span>
         </span>
+      }
     </div>
-</span>
+  </span>
