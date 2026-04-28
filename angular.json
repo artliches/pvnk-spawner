@@ -91,7 +91,7 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
