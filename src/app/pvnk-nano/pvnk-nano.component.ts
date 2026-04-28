@@ -2,9 +2,10 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AppCyberNanoService } from '../services/app-cyber-nano.service';
 
 @Component({
-  selector: 'app-pvnk-nano',
-  templateUrl: './pvnk-nano.component.html',
-  styleUrls: ['./pvnk-nano.component.scss']
+    selector: 'app-pvnk-nano',
+    templateUrl: './pvnk-nano.component.html',
+    styleUrls: ['./pvnk-nano.component.scss'],
+    standalone: false
 })
 export class PvnkNanoComponent implements OnChanges {
   @Input() nano: any;

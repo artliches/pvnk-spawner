@@ -3,9 +3,10 @@ import { AppCyberNanoService } from '../services/app-cyber-nano.service';
 import { RandomNumberService } from '../services/random-number.service';
 
 @Component({
-  selector: 'app-pvnk-identity',
-  templateUrl: './pvnk-identity.component.html',
-  styleUrls: ['./pvnk-identity.component.scss']
+    selector: 'app-pvnk-identity',
+    templateUrl: './pvnk-identity.component.html',
+    styleUrls: ['./pvnk-identity.component.scss'],
+    standalone: false
 })
 export class PvnkIdentityComponent implements OnInit, OnChanges {
   @Input() pvnk: any;

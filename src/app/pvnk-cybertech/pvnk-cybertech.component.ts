@@ -2,9 +2,10 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AppCyberNanoService } from '../services/app-cyber-nano.service';
 
 @Component({
-  selector: 'app-pvnk-cybertech',
-  templateUrl: './pvnk-cybertech.component.html',
-  styleUrls: ['./pvnk-cybertech.component.scss']
+    selector: 'app-pvnk-cybertech',
+    templateUrl: './pvnk-cybertech.component.html',
+    styleUrls: ['./pvnk-cybertech.component.scss'],
+    standalone: false
 })
 export class PvnkCybertechComponent implements OnChanges {
   @Input() cyberTech: any;

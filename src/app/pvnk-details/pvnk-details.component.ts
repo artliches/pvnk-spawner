@@ -3,9 +3,10 @@ import { RandomNumberService } from '../services/random-number.service';
 import { CYBERSLASHER_ORIGINS, DEBT, FEATURE, FORSAKEN_EXTRA, FORSAKEN_ORIGINS, GEARHEAD_ORIGINS, HACKER_ORIGINS, KILLER_ORIGINS, NAMES, NANOMANCER_ORIGIN, OBSESSION, QUIRK, STYLE, WANTS } from '../services/random-tables.constant';
 
 @Component({
-  selector: 'app-pvnk-details',
-  templateUrl: './pvnk-details.component.html',
-  styleUrls: ['./pvnk-details.component.scss']
+    selector: 'app-pvnk-details',
+    templateUrl: './pvnk-details.component.html',
+    styleUrls: ['./pvnk-details.component.scss'],
+    standalone: false
 })
 export class PvnkDetailsComponent implements OnInit, OnChanges {
     @Input() reroll = false;

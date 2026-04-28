@@ -4,9 +4,10 @@ import { RandomNumberService } from '../services/random-number.service';
 import { ARMOR, CYBERSLASHER_EXTRA, GEARHEAD_EXTRA, KILLER_EXTRA, NANOMANCER_EXTRA, START1, START2, START3, WEAPONS } from '../services/random-tables.constant';
 
 @Component({
-  selector: 'app-pvnk-equipment',
-  templateUrl: './pvnk-equipment.component.html',
-  styleUrls: ['./pvnk-equipment.component.scss']
+    selector: 'app-pvnk-equipment',
+    templateUrl: './pvnk-equipment.component.html',
+    styleUrls: ['./pvnk-equipment.component.scss'],
+    standalone: false
 })
 export class PvnkEquipmentComponent implements OnChanges {
     @Input() reroll = false;
