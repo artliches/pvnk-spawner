@@ -224,18 +224,20 @@ export class AppComponent implements OnInit {
     dieArray: any[];
   }) {
     let numArray = [];
+    let droppedDie: number = 0;
 
     value.dieArray = value.dropLow ? this.randomRoller.getDieArray(4, 6) : this.randomRoller.getDieArray(3,6);
-    numArray = value.dieArray;
+    numArray = value.dieArray.sort((a, b) => b -a);
     if (value.dropLow) {
-      numArray.sort((a, b) => b -a).pop;
+      droppedDie = numArray.pop();
     }
-    value.value = numArray.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+    value.value = numArray.reduce((previousValue: any, currentValue: any) => previousValue + currentValue, 0);
 
-    // value.value = value.dropLow ? this.randomRoller.dropLowest(4, 6) : this.randomRoller.rollMultipleDice(3,6);
     if (this.chosenPvnk.abilityMods.hasOwnProperty(value.name)) {
       value.value = value.value + this.chosenPvnk.abilityMods[value.name];
     }
+
+    if (droppedDie) value.dieArray.push(droppedDie)
   }
 
   assignAbilityValue(value: {
@@ -283,12 +285,10 @@ export class AppComponent implements OnInit {
   }
 };
 
-  getAbilityMods(specificAbility?: string) {
+  getAbilityMods(specificAbility?: string | null) {
     if (this.chosenPvnk.name.includes('pvnk') && !specificAbility) {
       // reset dropLow
-      for (let i = 0; i < this.abilities.length - 1; i++) {
-        this.abilities[i].dropLow = false;
-      }
+      this.abilities.forEach(ability => ability.dropLow = false);
       let prevIndex = -1;
 
       // randomly assign dropLow flag
@@ -297,6 +297,8 @@ export class AppComponent implements OnInit {
         prevIndex = index;
         this.abilities[index].dropLow = true;
       }
+    } else if (!this.chosenPvnk.name.includes('pvnk') && !specificAbility && this.abilities.some(ability => ability.dropLow === true)) {
+      this.abilities.forEach(ability => ability.dropLow = false);
     }
 
     if (specificAbility) {
@@ -344,7 +346,6 @@ export class AppComponent implements OnInit {
     };
     const theme = localStorage.getItem('theme') || 'void';
     document.body.style.backgroundColor = themeBackgrounds[theme];
-
   }
 
   print() {
