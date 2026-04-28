@@ -14,7 +14,7 @@
         font-size: 1.3em;
         display: grid;
         grid-gap: 0.5rem;
-        grid-template-columns: 40% 60%;
+        grid-template-columns: minmax(max-content, 111px) 1fr;
     }
     em {
         grid-area: descrip;
