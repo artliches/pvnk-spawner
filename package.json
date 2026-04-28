@@ -29,7 +29,7 @@
     "@angular/compiler-cli": "^20.3.19",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
-    "angular-cli-ghpages": "^1.0.0",
+    "angular-cli-ghpages": "^3.0.3",
     "typescript": "^5.8.3"
   }
 }

@@ -4,7 +4,7 @@
     <em>Test DR12 Presence to use Nano. Failure→take d2 dmg. +Fumble triggers Infection linked to that power (pg. 76). Each Nano use adds +1 to Fumble when using Nano until the next day.</em>
   </span>
   <span class="card-body">
-    @for (nanoDisplay of nano; track nanoDisplay; let i = $index) {
+    @for (nanoDisplay of nano; track $index; let i = $index) {
       <span class="nano-display">
         <span>
           <strong>POWER</strong>

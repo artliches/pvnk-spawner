@@ -5,7 +5,7 @@
   </span>
 
   <span class="card-body">
-    @for (app of apps; track app; let i = $index) {
+    @for (app of apps; track $index; let i = $index) {
       <span>
         <span (click)="rerollApp(i)" [innerHtml]="app | safeHtml"></span>
       </span>

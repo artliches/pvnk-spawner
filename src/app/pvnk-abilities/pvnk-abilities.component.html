@@ -9,7 +9,7 @@
           <span class="clickable" (click)="reRollAbility(ability.name)">{{ability.name | titlecase}}</span>
           @if (showDie) {
             <span>
-              @for (die of ability.dieArray; track die) {
+              @for (die of ability.dieArray; track $index) {
                 <span class="dicer-font">
                   {{die}}
                 </span>

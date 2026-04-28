@@ -11,7 +11,7 @@
 
   <span class="card-body">
     <ul>
-      @for (equip of equipment; track equip) {
+      @for (equip of equipment; track $index) {
         <li>
           <span (click)="reRollEquip(equip.key)" [innerHtml]="equip.value | safeHtml"></span>
         </li>
