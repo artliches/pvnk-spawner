@@ -46,6 +46,9 @@ export class PvnkIdentityComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (changes['pvnk'] && changes['pvnk'].previousValue) {
+      this.getGlitches();
+    }
     if (this.maxHp) {
       this.rolledHp = this.hpMod;
       this.hp = this.toughness + this.hpMod;
